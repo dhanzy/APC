@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block styles %}
+        <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo.png') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome/css/all.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/css/intlTelInput.css">
+    {% endblock styles %}
+
+    <script src="{{ url_for('static', filename='js/jquery-1.11.3.min.js') }}"></script>
+    <title>Register APC - All Progressive Party</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header style="height: 40vh;" class="header-section">
+            <div class="container">
+                <nav class="navbar navbar-light">
+                    <a href="/" class="navbar-brand">
+                        <img src="/static/images/logo.png" alt="Apc Logo" width="100" height="100">
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        {% block body%}
+        {% endblock body %}
+
+        <footer class='footer-section'>
+            <div class="container">
+                <div class="footer-wrapper">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <h3 class="header-title">About</h3>
+                            <div class="context">
+                                <p>The All Progressives Congress (APC) is a political party in Nigeria, formed on 6 February 2013 
+                                    in anticipation of the 2015 elections... <a href='#'>read more</a>
+                                </p>
+                                <ul>
+                                    <li class="fa fa-marker"> Abuja, Nigeria</li>
+                                    <li class="fa fa-envelope">info@apc.com.ng</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <h3 class="header-title">Quick Links</h3>
+                            <div class="context">
+                                <ul class="menu">
+                                    <li>Home</li>
+                                    <li>Login</li>
+                                    <li>Register</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="coL-sm-6">
+                            <div class="copyright">
+                                Copyright &copy; 2020 All Progressives Congress. All Rights Reserved.
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class='social-links'>
+                                <ul class="list-inline">
+                                    <li><a href='#'><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href='#'><i class="fa fa-twitter"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    {% block scripts%}
+        <script src="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js') }}" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/intlTelInput.min.js"></script>
+    {% endblock scripts %}
+</body>
+</html>

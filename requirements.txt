@@ -1,0 +1,12 @@
+flask
+flask_admin
+flask_sqlalchmey
+flask_security
+flask_bootstrap
+flask_wtf
+wtforms
+phonenumbers
+pycountry
+secrets
+pillow
+pdfkit

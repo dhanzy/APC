@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo.png') }} ">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css') }}">
+
+    <script src="{{ url_for('static', filename='js/jquery-1.11.3.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js') }}" ></script>
+    <title>APC - Memebership Form</title>
+    <style>
+        body{
+             background: #efefef;
+        }
+        a.nav-link{
+            font-size: 18px;
+            font-weight: bolder;
+            color: #ffff;
+            transition: all .5s ease-in;
+        }
+        a:hover.nav-link{
+            color: #f98a8aef;
+        }
+        .card{
+            padding: 30px 10px;
+            min-height: 100vh;
+            width: 100%;
+            max-width: 1000px;
+            margin: 30px auto;
+            background: #ffff;
+            box-shadow: 2px 3px 5px rgba(0,0,0,0.6);
+        }
+        .form-header{
+            font-weight: bolder;
+            font-size: 20px;
+        }
+        .input_field{
+            border-bottom: 1px solid #000000;
+            width: 100%;
+            text-align: center;
+            font-style: italic;
+            font-size: 18px;
+            color: rgba(0,0,0,0.8);
+        }
+        .text-content{
+            font-style: italic;
+            font-size: 18px;
+            color: rgba(0,0,0,0.8);
+        }
+        .underline{
+            border-bottom: 1px solid #000000;
+        }
+        .col-sm-12{
+            margin-bottom: 20px !important;
+        }
+
+        .input-file {
+            border: none;
+            background: none !important;
+            border-bottom: 1px solid rgba(0,0,0,1);
+            text-align: center;
+            color: rgba(0,0,0,0.8);
+            font-weight: 500;
+            font-size: 18px;
+            font-style: italic;
+            border-radius: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-dark" style="background-color: rgba(0,0,0,0.6);">
+            <a href="/" class="navbar-brand">
+                <img src="/static/images/logo.png" alt="Apc Logo" width="100" height="100">
+            </a>
+
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout/">Logout</a>
+                </li>
+              </ul>
+        </nav>
+        <div class="container-fluid">
+            <div class="card">
+                <div id="printt" name='print'>
+                    <header>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h3>Membership Registration Form</h3>
+                                <h1><strong>ALL PROGRESSIVE PARTY</strong></h1>
+                                <div class="logo">
+                                    <img src="\static\images\logo.png" alt="Apc Logo">
+                                </div>
+                                <h3><strong>JUSTICE, PEACE AND UNITY</strong></h3>
+                                <h3><strong>Change</strong></h3>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <h1><strong>Personal Information</strong></h1>
+                            </div>
+                        </div>
+                    </header>
+                    <main>
+                        <div class="container">
+                            <div class="personal"> 
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <h3 class="form-header">First Name: </h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="input_field">
+                                                    {{ user.firstname | capitalize }}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <h3 class="form-header">Last Name: </h3>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="input_field">
+                                                    {{ user.lastname | capitalize }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <h3 class="form-header">Country: </h3>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="input_field">
+                                                    {{ user.country }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h3 class="form-header">State: </h3>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input_field">
+                                                    {{ user.state }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <h3 class="form-header">City: </h3>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="input_field">
+                                                    {{ user.city }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <h3 class="form-header">Sex: </h3>
+                                            </div>
+                                            <div class="col-md-5">
+                                                {% if user.sex == 'male' %}
+                                                    <p class='text-content'><span class="underline">{{ user.sex | capitalize }}</span> / <span>Female</span></p>
+                                                {% else %}
+                                                    <p class='text-content'><span>Male</span> / <span class="underline">{{ user.sex }}</span></p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <h3 class='form-header'>Telephone: </h3>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="input_field">
+                                                    {{ user.phone }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <h3 class='form-header'>Email: </h3>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="input_field">
+                                                    {{ user.email }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <h3 class='form-header'>Local Government: </h3>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="input_field">
+                                                    {{ user.lga }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="form-row">
+                                    <div class="form-group col-md-6 row">
+                                        <label for="" class="col-sm-3 col-form-label form-header">First Name:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control input-file" value='{{ user.firstname }}' disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6 row">
+                                        <label for=" " class="col-sm-3 col-form-label form-header">Last Name:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control input-file" value='{{ user.lastname }}' disabled>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </main>
+                </div>
+                <div class="print-form" style='text-align: center; padding-right: 40px; padding-top: 100px;'>
+                    <button class="btn btn-info" onclick="printContent('printt')">Print 1</button>
+                    <a href="/print/" class="btn btn-primary" style="margin-left: 15px; width: 8rem;">Print 2</a>
+                </div>
+            </div>
+        </div>
+
+        <footer class='footer-section'>
+            <div class="container">
+                <div class="footer-wrapper">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <h3 class="header-title">About</h3>
+                            <div class="context">
+                                <p>The All Progressives Congress (APC) is a political party in Nigeria, formed on 6 February 2013 
+                                    in anticipation of the 2015 elections... <a href='#'>read more</a>
+                                </p>
+                                <ul>
+                                    <li class="fa fa-marker"> Abuja, Nigeria</li>
+                                    <li class="fa fa-envelope">info@apc.com.ng</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <h3 class="header-title">Quick Links</h3>
+                            <div class="context">
+                                <ul class="menu">
+                                    <li>Home</li>
+                                    <li>Login</li>
+                                    <li>Register</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="coL-sm-6">
+                            <div class="copyright">
+                                Copyright &copy; 2020 All Progressives Congress. All Rights Reserved.
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class='social-links'>
+                                <ul class="list-inline">
+                                    <li><a href='#'><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href='#'><i class="fa fa-twitter"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function printContent(el) {
+            console.log("Running print")
+            var restorepage = document.body.innerHTML;
+            var printcontent = document.getElementById(el).innerHTML;
+            document.body.innerHTML = printcontent;
+            window.print();
+            document.body.innerHTML = restorepage;
+       }
+    </script>
+</body>
+</html>

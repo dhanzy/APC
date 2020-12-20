@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+}
+header.header-section{
+    background: url('/static/images/4th-02-1.jpg') top center no-repeat;
+    background-size: cover;
+}
+.content-wrapper{
+    padding: 40px 0px;
+}
+footer{
+    background-color: #1f1e1e;
+    color: #606060;
+    font-size: 14px;
+}
+.iti{
+    width: 100%;
+}
+.footer-wrapper {
+    padding: 90px 0 22px;
+}
+
+.footer-copyright{
+    background-color: #131313;
+    padding: 20px 0;
+    font-size: 12px;
+}
