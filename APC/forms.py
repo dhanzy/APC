@@ -28,6 +28,7 @@ class ExtendedRegisterForm(RegisterForm):
     sex = SelectField('Sex', choices=[('male','Male'), ('female','Female')])
     country = SelectField('Country Of Residence', choices=[(country.name, country.name) for country in pycountry.countries])
     state = SelectField('State', choices=[('Lagos','Lagos'),('Ekiti','Ekiti'),('Enugu','Enugu'),('Gombe','Gombe')])
+    ward = SelectField('Ward', choices=[('Ado','Ado'),('Efon','Efon'),('Omuo','Omuo'), ('Aramoko','Aramoko'), ('Erijiyan','Erijiyan'),('Ikogosi','Ikogosi'),('Okemesi','Okemesi'),('Ido Ajinare', 'Ido Ajinare'),('Ilawe', 'Ilawe'),('Igbara Odo','Igbara Odo'), ('Ogotun', 'Ogotun'), ('Emure','Emure'),('Gboyin', 'Gboyin'),('Ido-Osi','Ido-Osi'),('Ijero','Ijero'),('Ipoti','Ipoti'),('Odo Owa','Odo Owa'),('Iloro','Iloro'),('Ikoro','Ikoro'),('Ekamarun','Ekamarun'),('Ekameta','Ekameta'),('Ikere','Ikere'),('Ikole','Ikole'),('Ilejemeje','Ilejemeje'),('Irepodun/Ifelodun','Irepodun/Ifelodun'),('Ise/Orun','Ise/Orun'),('Moba','Moba'),('Oye','Oye')])
     city = StringField('City', validators=[DataRequired(), Length(max=30)])
     lga = StringField('Local Government', validators=[DataRequired()])
 

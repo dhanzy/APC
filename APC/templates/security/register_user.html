@@ -26,6 +26,7 @@
                                 {{ render_shortfield_with_errors(register_user_form.sex, register_user_form.country) }}
                                 {{ render_shortfield_with_errors(register_user_form.city, register_user_form.state) }}
                                 {{ render_field_with_errors(register_user_form.lga, description='Local Government') }}
+                                {{ render_field_with_errors(register_user_form.ward, description='Ward') }}
                                 {{ render_field_with_errors(register_user_form.phone, description='Phone') }}
                                 {{ render_field_with_errors(register_user_form.password, description='Password') }}
                                 {% if register_user_form.password_confirm %}

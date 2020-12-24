@@ -180,6 +180,14 @@
                                                     {{ user.phone }}
                                                 </div>
                                             </div>
+                                            <div class="col-md-2">
+                                                <h3 class="form-header">Ward</h3>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="input_field">
+                                                    {{ user.ward }}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -287,7 +295,6 @@
     </div>
     <script>
         function printContent(el) {
-            console.log("Running print")
             var restorepage = document.body.innerHTML;
             var printcontent = document.getElementById(el).innerHTML;
             document.body.innerHTML = printcontent;

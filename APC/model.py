@@ -40,6 +40,7 @@ class User(db.Model, UserMixin):
     city = db.Column(String(50), nullable=False)
     lga = db.Column(String(50), nullable=False)
     image = db.Column(Unicode(150))
+    ward = db.Column(String(50))
     phone = db.Column(String(50), nullable=False)
     active = db.Column(Boolean())
     roles = db.relationship('Role', secondary=role_users, backref=db.backref('user', lazy='dynamic'))
