@@ -8,11 +8,11 @@ from flask_bootstrap import Bootstrap
 db = SQLAlchemy()
 security = Security()
 admin = Admin(name='Dashboard', template_mode='bootstrap3', base_template='layout.html')
-Bootstrap = Bootstrap()
+# Bootstrap = Bootstrap()
 
 def register_extension(app):
     db.init_app(app)
-    Bootstrap.init_app(app)
+    # Bootstrap.init_app(app)
     from APC.model import User, Role
     from APC.forms import ExtendedRegisterForm
     datastore = SQLAlchemyUserDatastore(db, User, Role)
@@ -22,7 +22,9 @@ def register_extension(app):
 
 def register_bluprint(app):
     from APC.main.routes import main
+    from APC.errors.handlers import errors
     app.register_blueprint(main)
+    app.register_blueprint(errors)
 
 
 def create_app(config):

@@ -37,5 +37,7 @@ class ExtendedRegisterForm(RegisterForm):
             p = phonenumbers.parse(phone.data)
             if not phonenumbers.is_valid_number(p):
                 raise ValueError()
+            if phone.data == '':
+                raise ValidationError('Phone Number required')
         except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
             raise ValidationError('Invalid phone number')

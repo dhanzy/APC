@@ -1,36 +1,26 @@
 {% from 'security/_macros.html' import render_field_with_errors, render_checkbox_field, render_field %}
-{% extends 'site-templates/header.html' %}
+{% extends 'site-templates/header2.html' %}
 
     {% block body %}
-    <main style='min-height: 100vh;'>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                    {% for category, message in messages %}
-                </div>
-            </div>
-            <div class="alert alert-dismissable alert-{{ category }}">
-                <a href="#" data-dismiss='alert' class="close">x</a>
-                {{ message }}
-            </div>
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
-            <div class="well" style="text-align: center;">
-                    <h1 style="font-weight: bold;">APC - MEMBERSHIP </h1>
-            </div>
-            <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
-                {{ login_user_form.hidden_tag() }}
-                {{ render_field_with_errors(login_user_form.email, description='Username') }}
-                {{ render_field_with_errors(login_user_form.password, description='Password') }}
-                {{ render_checkbox_field(login_user_form.remember) }}
-                {{ render_field(login_user_form.next) }}
-                {{ render_field(login_user_form.submit, class="btn btn-primary") }}
-            </form>
-            <p>Not yet signed up? Please <a href="{{ url_for_security('register') }}">register for an account</a>.</p>
+    <div class="card-content transition-fade" id='swup'>
+        <div class="image-logo text-center">
+            <img src="/static/images/logo.png" alt="Apc Logo" width="100" height="100">
         </div>
-    </main>
+        <h1 class='text-center'>APC MEMBERSHIP LOGIN</h1>
+        <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+            {{ login_user_form.hidden_tag() }}
+            {{ render_field_with_errors(login_user_form.email) }}
+            {{ render_field_with_errors(login_user_form.password) }}
+            {{ render_checkbox_field(login_user_form.remember) }}
+            {{ render_field(login_user_form.next) }}
+            {{ render_field(login_user_form.submit, class="btn btn-primary") }}
+        </form>
+        
+        <p style='margin-top: 20px;'>Not yet signed up? Please <a href="{{ url_for_security('register') }}">register for an account</a>.</p>
+        {% if security.recoverable %}
+            <p><a href="{{ url_for_security('forgot_password') }}">Forgot password?</a></p>
+        {% endif %}
+    </div>
+    
 
     {% endblock body %}

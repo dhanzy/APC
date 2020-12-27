@@ -1,0 +1,11 @@
+.cont {
+  margin-top: 5rem;
+  border: 1px solid #eee;
+  padding: 3rem;
+  box-shadow: 0 .3rem 5rem rgba(0, 0, 0, .1);
+  border-radius: 1rem;
+  background-color: #f7f7f7;
+}
+.card-img {
+  margin-bottom: 3rem;
+}

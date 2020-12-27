@@ -51,13 +51,24 @@ def test():
     rendered = render_template('pdf_content.html', user=user, host=host)
     return rendered
 
-@main.route('/')
+@main.route('/profile/')
 @login_required
 def index():
     email = current_user.email
     user = User.query.filter_by(email=email).first()
     print('Request ', request.host)
     return render_template('index.html', user=user)
+
+# @main.route('/signin/')
+# def signin():
+#     return render_template('signin.html')
+
+
+# @main.route('/signup/')
+# def signup():
+#     return render_template('signup.html')
+
+
 
 admin.add_view(ModelView(Role, db.session))
 admin.add_view(ModelView(User, db.session))

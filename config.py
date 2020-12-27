@@ -13,16 +13,18 @@ class Config(object):
     SECURITY_REGISTERABLE = True
     SECURITY_PASSWORD_HASH = 'pbkdf2_sha512'
     SECURITY_PASSWORD_SALT = 'aeffafyabvuavuu'
-    SECURITY_LOGIN_URL = '/login/'
+    SECURITY_LOGIN_URL = '/'
     SECURITY_LOGOUT_URL = '/logout/'
     SECURITY_REGISTER_URL = '/register/'
     SECURITY_REGISTER_USER_TEMPLATE = 'security/register_user.html'
     SECURITY_TRACKABLE = False
+    SECURITY_POST_LOGIN_VIEW = '/profile/'
+    SECURITY_RECOVERABLE = True
 
 
 class Debug(Config):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
-    DEBUG = True
+    DEBUG = False
 
 
 class Production(Config):

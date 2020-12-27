@@ -1,48 +1,33 @@
 {% from 'security/_macros.html' import render_field_with_errors, render_image, render_shortfield_with_errors, render_field %}
-{% extends 'site-templates/header.html' %}
+{% extends 'site-templates/header2.html' %}
 
 
         {% block body %}
-        <main style='min-height: 100vh;'>
-            <div class="container-fluid">
-                <div class="content-wrapper">
-                    <div class="col-md-12">
-                        {% with messages = get_flashed_messages(with_categories=true) %}
-                        {% if messages %}
-                        {% for category, message in messages %}
-                        <div class="alert alert-dismissable alert-{{ category }}">
-                            <a href="#" data-dismiss='alert' class="close">x</a>
-                            {{ message }}
-                        </div>
-                        {% endfor %}
-                        {% endif %}
-                        {% endwith %}
-                        <div class="col-md-7">
-                            <form action="/register/" method='POST' name='register_user_form' enctype="multipart/form-data">
-                                {{ register_user_form.hidden_tag() }}
-                                {{ render_shortfield_with_errors(register_user_form.firstname, register_user_form.lastname) }}
-                                
-                                {{ render_field_with_errors(register_user_form.email, description='Email') }}
-                                {{ render_shortfield_with_errors(register_user_form.sex, register_user_form.country) }}
-                                {{ render_shortfield_with_errors(register_user_form.city, register_user_form.state) }}
-                                {{ render_field_with_errors(register_user_form.lga, description='Local Government') }}
-                                {{ render_field_with_errors(register_user_form.ward, description='Ward') }}
-                                {{ render_field_with_errors(register_user_form.phone, description='Phone') }}
-                                {{ render_field_with_errors(register_user_form.password, description='Password') }}
-                                {% if register_user_form.password_confirm %}
-                                {{ render_field_with_errors(register_user_form.password_confirm, description='Confirm Password')}}
-                                {% endif %}
-                                {{ render_field(register_user_form.submit, class="btn btn-primary") }}
-                            </form>
-                            <p>Already Signed Up? Please <a href="{{ url_for_security('login') }}">Log In</a>.</p>
-                        </div>
-                        <div class="col-md-4">
-
-                        </div>
-                    </div>
-                </div>
+        <div class="card-content transition-fade" id='swup'>
+            <div class="image-logo text-center">
+                <img src="/static/images/logo.png" alt="Apc Logo" width="100" height="100">
             </div>
-        </main>
+            <h1 class='text-center'>APC MEMBERSHIP REGISTER</h1>
+
+            <form action="/register/" method='POST' name='register_user_form' enctype="multipart/form-data">
+                {{ register_user_form.hidden_tag() }}
+                {{ render_shortfield_with_errors(register_user_form.firstname, register_user_form.lastname) }}
+                
+                {{ render_field_with_errors(register_user_form.email) }}
+                {{ render_shortfield_with_errors(register_user_form.sex, register_user_form.country) }}
+                {{ render_shortfield_with_errors(register_user_form.city, register_user_form.state) }}
+                {{ render_field_with_errors(register_user_form.lga) }}
+                {{ render_field_with_errors(register_user_form.ward) }}
+                {{ render_field_with_errors(register_user_form.phone) }}
+                {{ render_field_with_errors(register_user_form.password) }}
+                {% if register_user_form.password_confirm %}
+                {{ render_field_with_errors(register_user_form.password_confirm)}}
+                {% endif %}
+                {{ render_field(register_user_form.submit, class="btn btn-primary") }}
+            </form>
+            <p>Already Signed Up? Please <a href="{{ url_for_security('login') }}">Log In</a>.</p>
+        </div>
+                        
 
     {% endblock body %}
         

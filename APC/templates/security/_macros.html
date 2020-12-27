@@ -1,4 +1,4 @@
-{% macro render_field_with_errors(field, description=None) %}
+{% macro render_fields_with_errors(field) %}
     <div class="form-group">
         <label for="{{ field.id }}"><strong>{{ field.label }}</strong></label>
         {{ field(class='form-control', **kwargs) | safe }}
@@ -15,32 +15,68 @@
 {% endmacro %}
 
 
+{% macro render_field_with_errors(field, description=None) %}
+    
+    {% if not field.errors %}
+        <div class="form-group">
+            <label for="{{ field.id }}"><strong>{{ field.label }}</strong></label>
+            {{ field(class='form-control', **kwargs) | safe }}
+        </div>
+    {% else %}
+        <div class="form-group">
+            <label for="{{ field.id }}"><strong>{{ field.label }}</strong></label>
+            {{ field(class='form-control is-invalid', **kwargs) | safe }}
+            {% for error in field.errors %}
+            <div id="{{ field.id }}" class='invalid-feedback'>
+                {{ error }}
+            </div>
+            {% endfor %}
+            
+        </div>
+        
+    {% endif %}
+    
+
+{% endmacro %}
+
+
 {% macro render_shortfield_with_errors(field, field2) %}
     <div class="form-row">
-        <div class="form-group col-md-6">
-        <label for="{{ field.id }}"><strong>{{ field.label }}</strong></label>
-        {{ field(class='form-control', **kwargs) | safe }}
-        {% if field.errors %}
-        <ul>
-            {%for error in field.errors %}
-            <li>{{ error }}</li>
+        {% if not field.errors %}
+            <div class="form-group col-md-6">
+            <label for="{{ field.id }}"><strong>{{ field.label }}</strong></label>
+                {{ field(class='form-control', **kwargs) | safe }}
+            </div>
+        {% else %}
+            <div class="form-group col-md-6">
+            <label for="{{ field.id }}"><strong>{{ field.label }}</strong></label>
+                {{ field(class='form-control is-invalid', **kwargs) | safe }}
+                {% for error in field.errors %}
+            <div id="{{ field.id }}" class='invalid-feedback'>
+                {{ error }}
+            </div>
             {% endfor %}
-        </ul>
-        {% endif %}
-        </div>
+            </div>
+    {% endif %}
+        
+    {% if not field2.errors %}
         <div class="form-group col-md-6">
-            <label for="{{ field.id }}"><strong>{{ field2.label }}</strong></label>
+        <label for="{{ field.id }}"><strong>{{ field2.label }}</strong></label>
             {{ field2(class='form-control', **kwargs) | safe }}
-            {% if field2.errors %}
-            <ul>
-            {%for error in field.errors %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
         </div>
+    {% else %}
+        <div class="form-group col-md-6">
+        <label for="{{ field.id }}"><strong>{{ field2.label }}</strong></label>
+            {{ field2(class='form-control is-invalid', **kwargs) | safe }}
+            {% for error in field2.errors %}
+        <div id="{{ field.id }}" class='invalid-feedback'>
+            {{ error }}
+        </div>
+        {% endfor %}
+        </div>
+    {% endif %}
     </div>
-
+    
 
 
 {% endmacro %}
