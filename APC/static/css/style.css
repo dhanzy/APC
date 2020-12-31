@@ -1,6 +1,9 @@
 body{
   background: #efefef;
 }
+.wrapper{
+  min-width: 1000px;
+}
 a.nav-link{
   font-size: 18px;
   font-weight: bolder;

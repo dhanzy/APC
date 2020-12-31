@@ -7,25 +7,24 @@
             <div class="image-logo text-center">
                 <img src="/static/images/logo.png" alt="Apc Logo" width="100" height="100">
             </div>
-            <h1 class='text-center'>APC MEMBERSHIP REGISTER</h1>
-
-            <form action="/register/" method='POST' name='register_user_form' enctype="multipart/form-data">
-                {{ register_user_form.hidden_tag() }}
-                {{ render_shortfield_with_errors(register_user_form.firstname, register_user_form.lastname) }}
+            <h1 class='text-center'>ALL PRGOGRESSIVE CONGRESS</h1>
+            <h1 class='text-center'>EKITI CHAPTER</h1>
+            <form action="" method='POST' name='register_user_form' enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                {{ render_shortfield_with_errors(form.firstname, form.lastname) }}
                 
-                {{ render_field_with_errors(register_user_form.email) }}
-                {{ render_shortfield_with_errors(register_user_form.sex, register_user_form.country) }}
-                {{ render_shortfield_with_errors(register_user_form.city, register_user_form.state) }}
-                {{ render_field_with_errors(register_user_form.lga) }}
-                {{ render_field_with_errors(register_user_form.ward) }}
-                {{ render_field_with_errors(register_user_form.phone) }}
-                {{ render_field_with_errors(register_user_form.password) }}
-                {% if register_user_form.password_confirm %}
-                {{ render_field_with_errors(register_user_form.password_confirm)}}
-                {% endif %}
-                {{ render_field(register_user_form.submit, class="btn btn-primary") }}
+                {{ render_shortfield_with_errors(form.sex, form.country) }}
+                {{ render_shortfield_with_errors(form.state, form.city) }}
+                {{ render_shortfield_with_errors(form.district, form.constituency) }}
+                {{ render_field_with_errors(form.lga) }}
+                {{ render_field_with_errors(form.ward) }}
+                {{ render_field_with_errors(form.phone, description='+234 80 123 45 678') }}
+                {{ render_field_with_errors(form.password) }}
+                
+                {{ render_field_with_errors(form.confirm_password)}}
+                {{ render_field(form.submit, class="btn btn-primary") }}
             </form>
-            <p>Already Signed Up? Please <a href="{{ url_for_security('login') }}">Log In</a>.</p>
+            <p>Already Signed Up? Please <a href="{{ url_for('main.login') }}">Log In</a>.</p>
         </div>
                         
 
@@ -34,19 +33,32 @@
     {% block scripts %}
     {{ super() }}
     <script>
-        var wtf_phone_field = document.getElementById('phone');
-        wtf_phone_field.style.position = 'absolute';
-        wtf_phone_field.style.top = '-9999px';
-        wtf_phone_field.style.left = '-9999px';
-        wtf_phone_field.parentElement.insertAdjacentHTML('beforeend', '<div><input type="tel" id="_phone" class="form-control"></div>');
-        var fancy_phone_field = document.getElementById('_phone');
-        var fancy_phone_iti = window.intlTelInput(fancy_phone_field, {
-            separateDialCode: true,
-            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/utils.js",
-        });
-        fancy_phone_iti.setNumber(wtf_phone_field.value);
-        fancy_phone_field.addEventListener('blur', function() {
-            wtf_phone_field.value = fancy_phone_iti.getNumber();
-        });
+        var phone_field = document.getElementById('phone');
+        
+        phone_field.addEventListener('focusout', ()=>{
+                console.log('Running')
+                var data = phone_field.value;
+                if (data.startsWith('0')){
+                    phone_field.value = data.replace('0', '+234');
+                }
+                else if (!data.startsWith('+234')){
+                    phone_field.value = '+234' + data
+                }
+            }
+        )
+
+        // wtf_phone_field.style.position = 'absolute';
+        // wtf_phone_field.style.top = '-9999px';
+        // wtf_phone_field.style.left = '-9999px';
+        // wtf_phone_field.parentElement.insertAdjacentHTML('beforeend', '<div><input type="tel" id="_phone" class="form-control"></div>');
+        // var fancy_phone_field = document.getElementById('_phone');
+        // var fancy_phone_iti = window.intlTelInput(fancy_phone_field, {
+        //     separateDialCode: true,
+        //     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/utils.js",
+        // });
+        // fancy_phone_iti.setNumber(wtf_phone_field.value);
+        // fancy_phone_field.addEventListener('blur', function() {
+        //     wtf_phone_field.value = fancy_phone_iti.getNumber();
+        // });
     </script>
     {% endblock %}

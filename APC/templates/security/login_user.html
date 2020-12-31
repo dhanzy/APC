@@ -6,21 +6,52 @@
         <div class="image-logo text-center">
             <img src="/static/images/logo.png" alt="Apc Logo" width="100" height="100">
         </div>
-        <h1 class='text-center'>APC MEMBERSHIP LOGIN</h1>
-        <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
-            {{ login_user_form.hidden_tag() }}
-            {{ render_field_with_errors(login_user_form.email) }}
-            {{ render_field_with_errors(login_user_form.password) }}
-            {{ render_checkbox_field(login_user_form.remember) }}
-            {{ render_field(login_user_form.next) }}
-            {{ render_field(login_user_form.submit, class="btn btn-primary") }}
+        <h1 class='text-center'>ALL PROGRESSIVE CONGRESS</h1>
+        <h1 class='text-center'>EKITI CHAPTER</h1>
+        <form action="" method="POST" name="login_user_form">
+            {{ form.hidden_tag() }}
+            {{ render_field_with_errors(form.phone) }}
+            {{ render_field_with_errors(form.password) }}
+            {{ render_checkbox_field(form.remember) }}
+            {{ render_field(form.submit, class="btn btn-primary") }}
         </form>
         
-        <p style='margin-top: 20px;'>Not yet signed up? Please <a href="{{ url_for_security('register') }}">register for an account</a>.</p>
-        {% if security.recoverable %}
-            <p><a href="{{ url_for_security('forgot_password') }}">Forgot password?</a></p>
-        {% endif %}
+        <p style='margin-top: 20px;'>Not yet signed up? Please <a href="{{ url_for('main.register') }}">register for an account</a>.</p>
+        
+        <p><a href="#">Forgot password?</a></p>
+        
     </div>
-    
-
     {% endblock body %}
+
+    {% block scripts %}
+    {{ super() }}
+    <script>
+        var phone_field = document.getElementById('phone');
+        
+        phone_field.addEventListener('focusout', ()=>{
+                console.log('Running')
+                var data = phone_field.value;
+                if (data.startsWith('0')){
+                    phone_field.value = data.replace('0', '+234');
+                }
+                else if (!data.startsWith('+234')){
+                    phone_field.value = '+234' + data
+                }
+            }
+        )
+
+        // wtf_phone_field.style.position = 'absolute';
+        // wtf_phone_field.style.top = '-9999px';
+        // wtf_phone_field.style.left = '-9999px';
+        // wtf_phone_field.parentElement.insertAdjacentHTML('beforeend', '<div><input type="tel" id="_phone" class="form-control"></div>');
+        // var fancy_phone_field = document.getElementById('_phone');
+        // var fancy_phone_iti = window.intlTelInput(fancy_phone_field, {
+        //     separateDialCode: true,
+        //     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/utils.js",
+        // });
+        // fancy_phone_iti.setNumber(wtf_phone_field.value);
+        // fancy_phone_field.addEventListener('blur', function() {
+        //     wtf_phone_field.value = fancy_phone_iti.getNumber();
+        // });
+    </script>
+    {% endblock %}

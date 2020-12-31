@@ -31,7 +31,7 @@
   }
 .card{
     z-index: 5;
-    width: 70%;
+    width: 80%;
     margin: 100px auto;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -46,10 +46,19 @@ html.is-animating .transition-fade{
     opacity: 0;
 }
 
+@media (max-width: 980px){
+    .card-content h1{
+        font-size: 2rem;
+    }
+}
 
 @media (max-width: 480px){
     .card{
         width: 90%;
+    }
+    .card-content h1{
+        font-size: 1.5rem;
+        font-weight: 500;
     }
 }
 
