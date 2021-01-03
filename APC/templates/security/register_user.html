@@ -13,7 +13,7 @@
                 {{ form.hidden_tag() }}
                 {{ render_shortfield_with_errors(form.firstname, form.lastname) }}
                 
-                {{ render_shortfield_with_errors(form.sex, form.country) }}
+                {{ render_field_with_errors(form.sex) }}
                 {{ render_shortfield_with_errors(form.state, form.city) }}
                 
                 {{ render_field_with_errors(form.lga) }}

@@ -64,7 +64,6 @@ def profile(user_id):
                 user.lga = form.lga.data
                 user.city = form.city.data
                 user.ward = form.ward.data
-                user.country = form.country.data
                 
                 db.session.commit()
                 flash('User account has been Updated', 'info')
@@ -78,7 +77,6 @@ def profile(user_id):
             form.lga.data = user.lga
             form.city.data = user.city
             form.ward.data = user.ward
-            form.country.data = user.country
 
             if user.image == 'default_profile.jpg':
                 alert = 'Upload User picture before you can print'
@@ -95,7 +93,6 @@ def profile(user_id):
             form.lga.data = user.lga
             form.city.data = user.city
             form.ward.data = user.ward
-            form.country.data = user.country
 
             if user.image == 'default_profile.jpg':
                 alert = 'Upload User picture before you can print'

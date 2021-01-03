@@ -152,17 +152,9 @@
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-md-2 col-2">
-                                                <h3 class="form-header">Country: </h3>
-                                            </div>
-                                            <div class="col-md-5 col-4">
-                                                <div class="input_field">
-                                                    {{ user.country }}
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 col-2">
                                                 <h3 class="form-header">State: </h3>
                                             </div>
-                                            <div class="col-md-3 col-4">
+                                            <div class="col-md-10 col-10">
                                                 <div class="input_field">
                                                     {{ user.state }}
                                                 </div>
@@ -173,7 +165,7 @@
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-md-2 col-2">
-                                                <h3 class="form-header">City: </h3>
+                                                <h3 class="form-header">Town: </h3>
                                             </div>
                                             <div class="col-md-4 col-4">
                                                 <div class="input_field">
@@ -184,11 +176,9 @@
                                                 <h3 class="form-header">Sex: </h3>
                                             </div>
                                             <div class="col-md-5 col-4">
-                                                {% if user.sex == 'male' %}
-                                                    <p class='text-content'><span class="underline">{{ user.sex | capitalize }}</span> / <span>Female</span></p>
-                                                {% else %}
-                                                    <p class='text-content'><span>Male</span> / <span class="underline">{{ user.sex }}</span></p>
-                                                {% endif %}
+						 <div class='input_field'>  
+							 {{ user.sex }}
+                                               </div>
                                             </div>
                                         </div>
                                     </div>

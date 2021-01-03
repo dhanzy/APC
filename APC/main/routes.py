@@ -97,7 +97,7 @@ def register():
         
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(firstname=form.firstname.data, lastname=form.lastname.data ,phone=form.phone.data, \
-            country=form.country.data, sex=form.sex.data, state=form.state.data, ward=form.ward.data, \
+            country='Nigeria', sex=form.sex.data, state=form.state.data, ward=form.ward.data, \
             city=form.city.data, lga=form.lga.data , password=hashed_password)
         db.session.add(user)
         db.session.commit()

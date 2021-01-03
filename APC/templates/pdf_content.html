@@ -99,18 +99,18 @@
                         
                             <div class="col-sm-12">
                                 <div class="row">
-                                    <div class="col-md-2 col" style="width: 17%">
+                                    <div class="col-md-2 col" style="width: 20%">
                                         <h3 class="form-header">First Name: </h3>
                                     </div>
-                                    <div class="col-sm-4 col" style="width: 33%;">
+                                    <div class="col-sm-4 col" style="width: 30%;">
                                         <div class="input_field">
                                             {{ user.firstname | capitalize }}
                                         </div>
                                     </div>
-                                    <div class="col-md-2 col" style='width: 17%'>
+                                    <div class="col-md-2 col" style='width: 20%'>
                                         <h3 class="form-header">Last Name: </h3>
                                     </div>
-                                    <div class="col-md-4 col" style='width: 33%'>
+                                    <div class="col-md-4 col" style='width: 30%'>
                                         <div class="input_field">
                                             {{ user.lastname | capitalize }}
                                         </div>
@@ -119,18 +119,10 @@
                             </div>
                             <div class="col-sm-12" style='width: 100%'>
                                 <div class="row">
-                                    <div class="col-md-2 col-sm-4" style='width: 11%'>
-                                        <h3 class="form-header">Country: </h3>
-                                    </div>
-                                    <div class="col-md-5 col-sm-8" style='width: 39%'>
-                                        <div class="input_field">
-                                            {{ user.country }}
-                                        </div>
-                                    </div>
                                     <div class="col-md-2 col-sm-4" style='width: 10%'>
                                         <h3 class="form-header">State: </h3>
                                     </div>
-                                    <div class="col-md-3 col-sm-8" style='width: 40%'>
+                                    <div class="col-md-3 col-sm-8" style='width: 90%'>
                                         <div class="input_field">
                                             {{ user.state }}
                                         </div>
@@ -141,7 +133,7 @@
                             <div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-md-2" style='width: 10%'>
-                                        <h3 class="form-header">City: </h3>
+                                        <h3 class="form-header">Town: </h3>
                                     </div>
                                     <div class="col-md-4" style='width: 40%'>
                                         <div class="input_field">
@@ -152,11 +144,9 @@
                                         <h3 class="form-header">Sex: </h3>
                                     </div>
                                     <div class="col-md-5" style='width: 40%'>
-                                        {% if user.sex == 'male' %}
-                                            <p class='text-content'><span class="underline">Male</span> / <span>Female</span></p>
-                                        {% else %}
-                                            <p class='text-content'><span>Male</span> / <span class="underline">Female</span></p>
-                                        {% endif %}
+                                       <div class='input_field'>
+					       {{ user.sex }}
+				       </div>
                                     </div>
                                 </div>
                             </div>

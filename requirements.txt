@@ -9,4 +9,5 @@ phonenumbers
 pycountry
 secrets
 pillow
+flask_login
 pdfkit
