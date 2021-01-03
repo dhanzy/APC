@@ -1,4 +1,4 @@
-{% from 'security/_macros.html' import render_field_with_errors, render_image, render_field %}
+{% from 'security/_macros.html' import render_field_with_errors, render_image, render_field, admin_view_input %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +22,7 @@
             text-decoration: none;
             color: #30859d;
         }
-    
+
         .col-md-5 .text-content span{
             padding: 0px 20px 0px 20px;
         }
@@ -93,13 +93,14 @@
 
                 <div class="print-form" style='padding-right: 40px; padding-bottom: 100px;'>
                     <div class="col-md-12 col-sm-12">
+                        <h4 style="margin-bottom: 15px;"><strong><a href="/admin/" style="font-size: 18px;"><span class="arrow-back">&#x2190</span> Back to Admin Dashboard</a></strong></h4>
                         <form action="" method="post" enctype="multipart/form-data">
-                            {{ form.hidden_tag() }}
-                            {{ render_image(form.profile_image) }}
-                            {{ form.submit_btn(class='btn btn-primary') }}
+                            {{ form2.hidden_tag() }}
+                            {{ render_image(form2.profile_image) }}
+                            {{ form2.submit_btn(class='btn btn-primary') }}
                             {% if user.image != 'default_profile.jpg' %}
                                 <!-- <button class="btn btn-info" onclick="printContent('printt')" style="padding-right: 15px; padding-left: 15px;">Print</button> -->
-                                <a href="/print/" class='btn btn-info'>Print</a>
+                                <a href="/admin/print/{{ user.id }}" class='btn btn-info'>Print</a>
                             {% else %} 
                                 <button class='btn btn-info' data-toggle='tooltip' data-placement='top' title='Change your profile picture' disabled="disabled">Print</button>
                             {% endif %}
@@ -126,6 +127,7 @@
                         </div>
                     </header>
                     <main>
+                        <form action="" method='POST' name='register_form'>
                         <div class="container">
                             <div class="personal" style="margin-top: 50px"> 
                                 <div class="row">
@@ -135,17 +137,13 @@
                                                 <h3 class="form-header">First Name: </h3>
                                             </div>
                                             <div class="col-sm-4 col-4">
-                                                <div class="input_field">
-                                                    {{ user.firstname | capitalize }}
-                                                </div>
+                                                    {{ admin_view_input(form.firstname) }}
                                             </div>
                                             <div class="col-md-2 col-2">
                                                 <h3 class="form-header">Last Name: </h3>
                                             </div>
                                             <div class="col-md-4 col-4">
-                                                <div class="input_field">
-                                                    {{ user.lastname | capitalize }}
-                                                </div>
+                                                    {{ admin_view_input(form.lastname) }}
                                             </div>
                                         </div>
                                     </div>
@@ -155,17 +153,13 @@
                                                 <h3 class="form-header">Country: </h3>
                                             </div>
                                             <div class="col-md-5 col-4">
-                                                <div class="input_field">
-                                                    {{ user.country }}
-                                                </div>
+                                                {{ admin_view_input(form.country) }}
                                             </div>
                                             <div class="col-md-2 col-2">
                                                 <h3 class="form-header">State: </h3>
                                             </div>
                                             <div class="col-md-3 col-4">
-                                                <div class="input_field">
-                                                    {{ user.state }}
-                                                </div>
+                                                {{ admin_view_input(form.state) }}
                                             </div>
                                         </div>
                                     </div>
@@ -176,19 +170,13 @@
                                                 <h3 class="form-header">City: </h3>
                                             </div>
                                             <div class="col-md-4 col-4">
-                                                <div class="input_field">
-                                                    {{ user.city }}
-                                                </div>
+                                                {{ admin_view_input(form.city) }}
                                             </div>
                                             <div class="col-md-1 col-2">
                                                 <h3 class="form-header">Sex: </h3>
                                             </div>
                                             <div class="col-md-5 col-4">
-                                                {% if user.sex == 'male' %}
-                                                    <p class='text-content'><span class="underline">{{ user.sex | capitalize }}</span> / <span>Female</span></p>
-                                                {% else %}
-                                                    <p class='text-content'><span>Male</span> / <span class="underline">{{ user.sex }}</span></p>
-                                                {% endif %}
+                                                {{ form.sex(class='form-control') }}
                                             </div>
                                         </div>
                                     </div>
@@ -199,17 +187,13 @@
                                                 <h3 class='form-header'>Telephone: </h3>
                                             </div>
                                             <div class="col-md-4 col-5">
-                                                <div class="input_field">
-                                                    {{ user.phone }}
-                                                </div>
+                                                {{ admin_view_input(form.phone) }}
                                             </div>
                                             <div class="col-md-2 col-2">
                                                 <h3 class="form-header">Ward: </h3>
                                             </div>
                                             <div class="col-md-4 col-3">
-                                                <div class="input_field">
-                                                    {{ user.ward }}
-                                                </div>
+                                                {{ admin_view_input(form.ward) }}
                                             </div>
                                         </div>
                                     </div>
@@ -222,29 +206,18 @@
                                                 <h3 class='form-header'>Local Government: </h3>
                                             </div>
                                             <div class="col-md-9 col-9">
-                                                <div class="input_field">
-                                                    {{ user.lga }}
-                                                </div>
+                                                {{ admin_view_input(form.lga) }}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="form-row">
-                                    <div class="form-group col-md-6 row">
-                                        <label for="" class="col-sm-3 col-form-label form-header">First Name:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control input-file" value='{{ user.firstname }}' disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6 row">
-                                        <label for=" " class="col-sm-3 col-form-label form-header">Last Name:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control input-file" value='{{ user.lastname }}' disabled>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                
                             </div>
                         </div>
+                        <div class="col-sm-12" style="margin-top: 50px;">
+                            {{ form.submit(class='btn btn-primary') }}
+                        </div>
+                        </form>
                     </main>
                 </div>
                 
@@ -302,6 +275,21 @@
             </div>
         </footer>
     </div>
+    <script>
+        var phone_field = document.getElementById('phone');
+        
+        phone_field.addEventListener('focusout', ()=>{
+                console.log('Running')
+                var data = phone_field.value;
+                if (data.startsWith('0')){
+                    phone_field.value = data.replace('0', '+234');
+                }
+                else if (!data.startsWith('+234')){
+                    phone_field.value = '+234' + data
+                }
+            }
+        )
+    </script>
     <script type='text/javascript'>
         var file_input_label = document.getElementById('file_input_label');
         var input = document.getElementById('file_input')

@@ -4,32 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="http://{{ host }}">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo.png') }} ">
+    <!-- <base href="http://{{ host }}"> -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo.png', _external=True) }} ">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css', _external=True) }}">
 
-    <script src="{{ url_for('static', filename='js/jquery-1.11.3.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/jquery-1.11.3.min.js', _external=True) }}"></script>
+    <script src="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js', _external=True) }}" ></script>
     <title>APC - Memebership Form</title>
 
     <style>
 
-        
+        .row{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            /* -webkit-box-pack: center; */
+            flex-wrap: wrap;
+        }
+        .col-sm-12{
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
         .form-header{
             font-weight: bolder;
             font-size: 20px;
         }
         .input_field{
-            border-bottom: 1px solid #000000;
+            border-bottom: 1px solid #000;
             width: 100%;
             text-align: center;
             font-style: italic;
             font-size: 18px;
             color: rgba(0,0,0,0.8);
         }
+        .underline{
+            border-bottom: 1px solid #000;
+        }
+        .col-md-5 .text-content span{
+            padding: 0px 20px 0px 20px;
+        }
         .col-sm-12{
-            margin-bottom: 20px !important;
+            margin-bottom: 30px !important;
+        }
+        .col-sm-8{
+            -webkit-box-flex: 0 0 66.666667%;
+        }
+        .col-sm-4{
+            -webkit-box-flex: 0 0 33.333333%;;
         }
         .input-file {
             border: none;
@@ -55,58 +78,59 @@
         <div class="container-fluid">
             <header>
                 <div class="row">
-                    <div class="col-md-12 text-center">
+                    <div class="col-sm-8 col text-center" style='width: 60%'>
                         <h3>Membership Registration Form</h3>
-                        <h1><strong>ALL PROGRESSIVE PARTY</strong></h1>
+                        <h1><strong>ALL PROGRESSIVE CONGRESS</strong></h1>
+                        <h3><strong>Ekiti Chapter</strong></h3>
                         <div class="logo">
-                            <img src="\static\images\logo.png" alt="Apc Logo">
+                            <img src="{{ url_for('static', filename='images/logo.png', _external=True) }}" alt="Apc Logo">
                         </div>
                         <h3><strong>JUSTICE, PEACE AND UNITY</strong></h3>
                         <h3><strong>Change</strong></h3>
                     </div>
-                    <div class="col-md-12 text-center">
-                        <h1><strong>Personal Information</strong></h1>
+                    <div class="col-sm-4 col text-center" style="width: 40%">
+                        <img src="{{ url_for('static', filename='images/profile_pictures/', _external=True) }}{{ user.image }}" alt="User Profile Picture" style='width: 100%; max-width: 275px; margin-right: 20px; max-height: 300px'>
                     </div>
                 </div>
             </header>
             <main>
                 <div class="container">
-                    <div class="personal"> 
-                        <div class="row">
+                    <div class="personal" style="margin-top: 50px"> 
+                        
                             <div class="col-sm-12">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-md-2 col" style="width: 17%">
                                         <h3 class="form-header">First Name: </h3>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4 col" style="width: 33%;">
                                         <div class="input_field">
                                             {{ user.firstname | capitalize }}
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-md-2 col" style='width: 17%'>
                                         <h3 class="form-header">Last Name: </h3>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-md-4 col" style='width: 33%'>
                                         <div class="input_field">
                                             {{ user.lastname | capitalize }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
+                            <div class="col-sm-12" style='width: 100%'>
                                 <div class="row">
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 col-sm-4" style='width: 11%'>
                                         <h3 class="form-header">Country: </h3>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-5 col-sm-8" style='width: 39%'>
                                         <div class="input_field">
                                             {{ user.country }}
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 col-sm-4" style='width: 10%'>
                                         <h3 class="form-header">State: </h3>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 col-sm-8" style='width: 40%'>
                                         <div class="input_field">
                                             {{ user.state }}
                                         </div>
@@ -116,22 +140,22 @@
 
                             <div class="col-sm-12">
                                 <div class="row">
-                                    <div class="col-md-2">
+                                    <div class="col-md-2" style='width: 10%'>
                                         <h3 class="form-header">City: </h3>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" style='width: 40%'>
                                         <div class="input_field">
                                             {{ user.city }}
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1" style='width: 10%'>
                                         <h3 class="form-header">Sex: </h3>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-5" style='width: 40%'>
                                         {% if user.sex == 'male' %}
-                                            <p class='text-content'><span class="underline">{{ user.sex | capitalize }}</span> / <span>Female</span></p>
+                                            <p class='text-content'><span class="underline">Male</span> / <span>Female</span></p>
                                         {% else %}
-                                            <p class='text-content'><span>Male</span> / <span class="underline">{{ user.sex }}</span></p>
+                                            <p class='text-content'><span>Male</span> / <span class="underline">Female</span></p>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -139,46 +163,57 @@
 
                             <div class="col-sm-12">
                                 <div class="row">
-                                    <div class="col-md-2">
+                                    <div class="col-md-2" style="width: 16%;">
                                         <h3 class='form-header'>Telephone: </h3>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" style="width: 44%;">
                                         <div class="input_field">
                                             {{ user.phone }}
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <h3 class='form-header'>Email: </h3>
+                                    <div class="col-md-2" style="width: 10%;">
+                                        <h3 class="form-header">Ward</h3>
                                     </div>
-                                    <div class="col-md-10">
+                                    <div class="col-md-4" style="width: 30%;">
                                         <div class="input_field">
-                                            {{ user.email }}
+                                            {{ user.ward }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            
+
                             <div class="col-sm-12">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" style='width: 25%'>
                                         <h3 class='form-header'>Local Government: </h3>
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9" style='width: 75%'>
                                         <div class="input_field">
                                             {{ user.lga }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
-                        
+                        <!-- <div class="form-row">
+                            <div class="form-group col-md-6 row">
+                                <label for="" class="col-sm-3 col-form-label form-header">First Name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control input-file" value='{{ user.firstname }}' disabled>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 row">
+                                <label for=" " class="col-sm-3 col-form-label form-header">Last Name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control input-file" value='{{ user.lastname }}' disabled>
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
-                </div>
             </main>
         </div>
     </div>

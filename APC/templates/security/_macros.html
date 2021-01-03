@@ -73,6 +73,19 @@
 {% endmacro %}
 
 
+{% macro admin_view_input(field) %}
+    {% if not field.errors %}
+        {{ field(class='form-control', placeholder=description, **kwargs) | safe }}
+    {% else %}
+        {{ field(class='form-control is-invalid', placeholder=description, **kwargs) | safe }}
+        {% for error in field.errors %}
+            <div id="{{ field.id }}" class='invalid-feedback'>
+                {{ error }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
 
 {% macro render_field(field) %}
     {{ field(class_='form-control', **kwargs)|safe }}

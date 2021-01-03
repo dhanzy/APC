@@ -1,5 +1,5 @@
 import os
-
+from datetime import timedelta
 
 class Config(object):
     SECRET_KEY = 'adkbdbadbakdbahdbhfh'
@@ -11,7 +11,13 @@ class Config(object):
 
 
 class Debug(Config):
+    # SQLAlchemy Database
     SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
+
+    # Flask Login Configuration
+    REMEMBER_COOKIE_HTTPONLY = True
+    REMEMBER_COOKIE_DURATION = timedelta(days=1)
+
     DEBUG = True
 
 

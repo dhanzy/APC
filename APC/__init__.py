@@ -37,8 +37,13 @@ def register_extension(app):
 def register_bluprint(app):
     from APC.main.routes import main
     from APC.errors.handlers import errors
+    from APC.admins.routes import admins
+    from APC.api.routes import api
+
     app.register_blueprint(main)
+    app.register_blueprint(admins)
     app.register_blueprint(errors)
+    app.register_blueprint(api)
 
 
 def create_app(config):
