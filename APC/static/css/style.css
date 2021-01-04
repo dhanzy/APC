@@ -61,6 +61,7 @@ a:hover.nav-link{
 
 footer{
   background-color: #1f1e1e;
+  width: 100%; 
   color: #606060;
   font-size: 14px;
 }
