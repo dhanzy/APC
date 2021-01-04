@@ -24,7 +24,7 @@ admin = Admin(name='Dashboard', template_mode='bootstrap3')
 # Bootstrap = Bootstrap()
 
 def register_extension(app):
-    from APC.model import User, Role
+    from APC.model import User
     from APC.admins.routes import AdminHomeView
     
     db.init_app(app)

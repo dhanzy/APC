@@ -1,156 +1,89 @@
-{% import 'admin/layout.html' as layout with context -%}
-{% extends 'admin/base.html' %}
 
-{% block head_tail %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/light.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome/css/all.css') }}">
-    <link rel="stylesheet" href="/static/css/neon-forms.css">
-    <script src="/static/js/chart.js/dist/Chart.min.js"></script>
-    <script src="/static/js/chart.js/dist/Chart.extension.js"></script>
-    <script src="/static/js/jquery-1.11.3.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APC - Admin Panel</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo.png') }} ">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/neon-core.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/neon-forms.css') }}"> -->
+
+    {% block stylesheet %}
+    {% endblock %}
+
+    <script src="{{ url_for('static', filename='js/jquery-1.11.3.min.js') }}"></script>
+    {% block style  %}
     <style>
-        body{
-            padding-top: 0px;
+        a#adminDropDownButton{
+            font-size: 16px;
+            color: #34bce4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a#adminDropDownButton:hover{
+            text-decoration: none;
+            color: #34bce4;
+        }
+        .dataTables_wrapper{
+            background-color: #333;
         }
     </style>
-    {% block style %}
-    {% endblock %}
-{% endblock head_tail %}
-
-{% block page_body %}
-    <div class="toaster-background"></div>
+    {% endblock style %}
+</head>
+<body>
     <div class="wrapper">
-            <div class="left-side-menu">
-                <a href="/" class="logo text-center">
-                    <h3 class="logo-lg">Our Teez</h3>
+
+        <header class="navbar navbar-fixed-top logo-env">
+			<nav class="navbar navbar-light bg-light" style='width: 100%'>
+                <a class="navbar-brand" href="#">
+                  <img src="{{ url_for('static', filename='images/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                  EKITI CHAPTER
                 </a>
-                <div id="left-side-menu-container" class="h-100">
-                    <div class="side-menu-content">
-                        <ul class="side-nav">
-                            {{ layout.menu() }}
-                            {{ layout.menu_links() }}
-                            {% set render_ctx = h.resolve_ctx() %}
-                        </ul>
-                        <div class="side-menu-footer">
-                            <ul class="side-nav">
-                                <a href="#"><i class="fa fa-wrench"></i> Settings</a>
-                            </ul>
+                <span class="navbar-text">
+                    <div class="dropdown">
+                        <a href="#" class='dropdown-toggle' id='adminDropDownButton' data-toggle='dropdown' aria-haspopup="true" aria-expanded="false">
+                            <img src="/static/images/profile_pictures/default_profile.jpg" alt="" class="img-circle" width="30" height="30"/>
+                            <span font-size: 15px>  {{ current_user.firstname }}</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="adminDropDownButton">
+                            <a href="/logout/" class="dropdown-item">Logout</a>
                         </div>
                     </div>
+                </span>
+              </nav>
+        </header>
+        <main>
+            <div class="container-fluid">
+                <div class="col-md-12" id='flash-messages' style='margin-top: 15px;'>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-dismissable alert-{{ category }}">
+                                <a href="#" data-dismiss='alert' class="close">x</a>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                {% block body %}
+
+                {% endblock body %}
                 </div>
             </div>
-
-            <div class="content-page">
-                <div class="content">
-                    <div class="navbar-custom">
-                        <div class="navbar-header">
-                            <button class="button-menu-mobile" >
-                            <!-- <button type="button" class="navbar-toggle"> -->
-                                <!-- <span class="sr-only">Toggle Navigation</span> -->
-                                <span class="mobile-line"></span>
-                                <span class="mobile-line"></span>
-                                <span class="mobile-line"></span>
-                                
-                            </button>
-                            <div class="app-search mobile-hide">
-                                <form action="">
-                                    <div class="input-group">
-                                        <input type="text" name="" id="top-search" class="form-control" placeholder="Search...">
-                                        <i class="fa fa-search search-icon"></i>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="submit">Search</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        
-                        <ul class="topbar-right-menu">
-                            <li class="dropdown notification-list d-lg-none">
-                                <a href="#" class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" role='button' aria-expanded="false"><i class="fa fa-search noti-icon"></i></a>
-                                <div class="dropdown-menu">
-                                    <form action="">
-                                        <input type="text" class="form-control" placeholder='Search...'>
-                                    </form>
-                                </div>
-                            </li>
-                            <li class="dropdown notification-list">
-                                <a href="#" class="nav-link dropdown-toggle">
-                                    <i class="fa fa-bell noti-icon"></i><span class="badge" style="margin-top: -20px;">2</span>
-                                </a>
-                            </li>
-                            <li class="dropdown notification-list">
-                                <a href="#" class="nav-link dropdown-toggle"><i class="ni ni-calendar-grid-58 noti-icon"></i></a>
-                            </li>
-                            <li class="dropdown notification-list">
-                                <a href="#" class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <span class='account-user-avatar'>
-                                        <img src="{{ url_for('static', filename='Images/themes/') }}" alt="" class="rounded-circle">
-                                    </span>
-                                    <span class='mobile-hide'>
-                                        {% if current_user.first_name %}
-                                            <p class="account-user-name">{{ current_user.first_name }}</p>
-                                        {% else %}
-                                            <p class="account-user-name">{{ current_user.email }}</p>
-                                        {% endif %}
-                                    </span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Welcome</a></li>
-                                    <li><a href="#">My Account</a></li>
-                                    <li><a href="{{ url_for('security.logout') }}">Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul> 
-                    </div>
-
-                    <div class="container-fluid" style="padding-top: 80px">
-                        
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="page-title-box">
-                                    <h4>{{ admin_view.name | capitalize }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                        {{ layout.messages() }}
-                        {% block body %}
-                        
-                        {% endblock %}
-                    </div>
-                </div>
-            </div>
+        </main>
 
 
-            <!-- <script type='text/javascript'>
-                const sleep = (milliseconds) => {return new Promise(resolve => setTimeout(resolve, milliseconds))}
-
-                const pollserver = async()=>{
-                    while (true){
-                        await sleep(1000);
-                        $.getJSON('/api/session/orders/', function(data){
-                            try{
-                                if (data.length > 0){
-                                    for (var i = 0; i < data.length; i++){
-                                        let session = data[i]
-                                        var notification = toastr.success("New Order From " + session.name)
-                                    }
-                                }
-                            } catch(e){
-                                cosole.error(e)
-                            }
-                        });
-                    }
-                }
-                pollserver()
-            </script> -->
-            
-            
-            {% block inline_script %}
-            {% endblock %}
-            <script src="/static/js/dashboard.js"></script>
-            <script src="/static/js/toastr.js"></script>
-        
     </div>
-{% endblock %}
+
+    {% block script %}
+    
+    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/datatables/datatables.css') }}">
+    <script src="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='plugins/datatables/datatables.js') }}"></script>
+</body>
+</html>

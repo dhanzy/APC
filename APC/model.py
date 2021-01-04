@@ -10,25 +10,6 @@ from APC import db, login_manager
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-role_users = db.Table(
-    'role_user',
-    db.Column('user_id', db.Integer(), ForeignKey('user.id')),
-    db.Column('role_id', db.Integer(), ForeignKey('role.id'))
-)
-
-
-class Role(db.Model):
-    id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(30), unique=True)
-    description = db.Column(db.String(200))
-
-
-    def __str__(self):
-        return self.name
-
-    def __repr__(self):
-        return "<Role %r>" % str(self.name)
-
 
 
 class User(db.Model, UserMixin):
@@ -36,10 +17,7 @@ class User(db.Model, UserMixin):
     firstname = db.Column(String(30))
     lastname = db.Column(String(30))
     phone = db.Column(String(50), nullable=False, unique=True)
-    country = db.Column(String(50))
     sex = db.Column(String(10))
-    district = db.Column(String(10))
-    constituency = db.Column(String(30))
     state = db.Column(String(50))
     ward = db.Column(String(50))
     city = db.Column(String(50), nullable=False)
@@ -47,14 +25,14 @@ class User(db.Model, UserMixin):
     password = db.Column(String(255))
     image = db.Column(Unicode(150), default='default_profile.jpg')
     active = db.Column(Boolean())
-    roles = db.relationship('Role', secondary=role_users, backref=db.backref('user', lazy='dynamic'))
+    role = db.Column(String(50))
 
   
     def get_security_payload(self):
         return {
             'id': self.id,
             'firstname': self.firstname,
-            'phone': self.phone
+            'phone': self.phone,
         }
 
     def __str__(self):

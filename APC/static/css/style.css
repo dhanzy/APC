@@ -64,6 +64,7 @@ footer{
   width: 100%; 
   color: #606060;
   font-size: 14px;
+  min-width: 1000px;
 }
 
 .footer-wrapper {

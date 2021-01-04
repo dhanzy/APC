@@ -45,9 +45,11 @@ def user_remove():
     
     user = User.query.filter_by(id=int(user_uid)).first()
     if not user:
-        print('Invalid User with id: ' + user_uid)
         return redirect('/admin/')
     if user:
+        if user.role == 'admin' or user.role == 'super':
+            flash('The user you specified is an admin. You can\'t remove an admin!', 'info')
+            return redirect('/admin/')
         db.session.delete(user)
         db.session.commit()
         return "User {} removed".format(user.phone)

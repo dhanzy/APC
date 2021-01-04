@@ -1,14 +1,17 @@
 import os
 from datetime import datetime
+import functools
 
 import pdfkit
 import secrets
 from PIL import Image
-from flask import Blueprint, render_template, request, url_for, make_response, flash, redirect
+from flask import Blueprint, render_template, request, url_for, make_response, flash, redirect, abort
 from flask_admin import  AdminIndexView, expose, BaseView
+from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required, current_user
  
 
+from APC import admin
 from APC.model import User, db
 from APC.forms import RegisterForm, UploadImageForm
 
@@ -25,8 +28,19 @@ def save_picture(form_picture):
     size=(180,180)
     f = Image.open(form_picture)
     f.thumbnail(size)
-    f.save(picture_path)
+    f.save(picture_path) 
     return picture_fn
+
+
+def admin_required(function):
+    @functools.wraps(function)
+    def wrapper(*args, **kwargs):
+        if current_user.is_authenticated and current_user.role == 'admin' or current_user.role == 'super':
+            return function(*args, **kwargs)
+        elif not current_user.is_authenticated:
+            return redirect(url_for('main.login'))
+        else:
+            return abort(403)
 
 
 
@@ -34,13 +48,15 @@ class AdminHomeView(AdminIndexView):
     @login_required
     @expose('/', methods=['GET','POST'])
     def index(self):
+        print('Role: ', current_user.role)
+        if current_user.role != 'admin' and current_user.role != 'super':
+            return abort(403)
         users = User.query.all()
         return self.render('admin/index.html', users=users)
 
 
-
+@admin_required
 @admins.route('/admin/profile/<user_id>', methods=['GET','POST'])
-@login_required
 def profile(user_id):
     if current_user.is_authenticated:
         alert = None
@@ -104,8 +120,8 @@ def profile(user_id):
 
 
 
+@admin_required
 @admins.route('/admin/print/<user_id>')
-@login_required
 def pdf_template(user_id):
     user = User.query.filter_by(id=int(user_id)).first()
     print('Image: ', user.image)
@@ -119,3 +135,30 @@ def pdf_template(user_id):
     response.headers["Content-Type"] = "application/pdf"
     response.headers["Content-Disposition"] = "inline; filename=output.pdf"
     return response
+
+
+
+class SuperView(ModelView):
+    def is_accessible(self):
+        if not current_user.is_authenticated or not current_user.role == 'super':
+            return False
+        if current_user.role == 'super':
+            return True
+
+        return False
+
+    def _handle_view(self, name, **kwargs):
+        if not self.is_accessible():
+            if current_user.is_authenticated:
+                abort(403)
+            else:
+                return redirect('/admin/')
+
+    can_export = False
+    can_delete = True
+    edit_modal = True
+    create_modal = True
+    details_modal = True
+
+
+admin.add_view(SuperView(User, db.session))

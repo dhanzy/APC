@@ -5,13 +5,12 @@ import pdfkit
 import secrets
 from PIL import Image
 from flask import Blueprint, render_template, make_response, redirect, session, request, flash, url_for
-from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required, current_user, login_user, logout_user
 
 
-from APC.model import User, Role
+from APC.model import User
 from APC.forms import LoginForm, RegisterForm, UploadImageForm
-from APC import db, admin, bcrypt
+from APC import db, bcrypt
 
 main = Blueprint('main', __name__)
 
@@ -49,18 +48,11 @@ def pdf_template():
 
 
 
-@main.route('/test/')
-@login_required
-def test():
-    phone = current_user.phone
-    user = User.query.filter_by(phone=phone).first()
-    host = request.host
-    rendered = render_template('pdf_content.html', user=user, host=host)
-    return rendered
-
 @main.route('/profile/', methods=['GET','POST'])
 @login_required
 def index():
+    if current_user.role == 'admin' or current_user.role == 'super':    
+        return redirect('/admin/')
     alert = None
     user_id = current_user.get_id()
     user = User.query.filter_by(id=user_id).first()
@@ -97,7 +89,7 @@ def register():
         
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(firstname=form.firstname.data, lastname=form.lastname.data ,phone=form.phone.data, \
-            country='Nigeria', sex=form.sex.data, state=form.state.data, ward=form.ward.data, \
+            sex=form.sex.data, state=form.state.data, ward=form.ward.data, role='user',\
             city=form.city.data, lga=form.lga.data , password=hashed_password)
         db.session.add(user)
         db.session.commit()
@@ -143,5 +135,4 @@ def login():
 
 
 
-admin.add_view(ModelView(Role, db.session))
-admin.add_view(ModelView(User, db.session))
+

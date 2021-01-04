@@ -35,8 +35,6 @@ class RegisterForm(FlaskForm):
     lastname = StringField('Last Name', validators=[DataRequired(), Length(max=32)])
     phone = StringField('Phone',  validators=[DataRequired()])
     sex = SelectField('Sex', choices=[('male','Male'), ('female','Female')])
-    # district = SelectField('District', choices=['North','South'])
-    # constituency = SelectField('Federal Constituency', choices=['Ekiti Central 1','Ekiti Central 2','Ekiti North 1','Ekiti North 2','Ekiti South 1', 'Ekiti South 2'])
     profile_image = FileField('Update Image', validators=[FileAllowed(['jpg','png'])])
     state = SelectField('State', choices=[('Ekiti','Ekiti')])
     ward = SelectField('Ward', choices=[str(i) for i in range(1,14)])

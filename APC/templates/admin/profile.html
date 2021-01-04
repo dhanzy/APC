@@ -1,17 +1,13 @@
-{% from 'security/_macros.html' import render_field_with_errors, render_image, render_field, admin_view_input %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo.png') }} ">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome/css/all.css') }}">
 
-    <script src="{{ url_for('static', filename='js/jquery-1.11.3.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js') }}" ></script>
-    <title>APC - Memebership Form</title>
+{% from 'security/_macros.html' import render_field_with_errors, render_image, render_field, admin_view_input %}
+{% extends 'layout.html' %}
+
+
+    {% block stylesheet %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% endblock %}
+
+    {% block style %}
     <style>
         a{
             text-decoration: none;
@@ -51,224 +47,141 @@
             color: #34bce4;
         }
     </style>
-</head>
-<body>
-    <div class="wrapper">
-        <nav class="navbar navbar-dark" style="background-color: rgba(0,0,0,0.6);">
-            <a href="/" class="navbar-brand">
-                <img src="/static/images/logo.png" alt="Apc Logo" width="100" height="100">
-            </a>
+    {% endblock %}
 
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                  <a class="nav-link" href="/logout/">Logout</a>
-                </li>
-              </ul>
-        </nav>
-        <div class="container-fluid">
-            
-                
-            {% if alert %}
-                <div class="col-md-12" style="margin-top: 15px;"></div>    
-                    <div class="alert alert-dismissable alert-info">
-                        {{ alert }}
-                    </div>
+
+    {% block body %}
+        <div class="card">
+
+            <div class="print-form" style='padding-right: 40px; padding-bottom: 100px;'>
+                <div class="col-md-12 col-sm-12">
+                    <h4 style="margin-bottom: 15px;"><strong><a href="/admin/" style="font-size: 18px;"><span class="arrow-back">&#x2190</span> Back to Admin Dashboard</a></strong></h4>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {{ form2.hidden_tag() }}
+                        {{ render_image(form2.profile_image) }}
+                        {{ form2.submit_btn(class='btn btn-primary') }}
+                        {% if user.image != 'default_profile.jpg' %}
+                            <!-- <button class="btn btn-info" onclick="printContent('printt')" style="padding-right: 15px; padding-left: 15px;">Print</button> -->
+                            <a href="/admin/print/{{ user.id }}" class='btn btn-info'>Print</a>
+                        {% else %} 
+                            <button class='btn btn-info' data-toggle='tooltip' data-placement='top' title='Change your profile picture' disabled="disabled">Print</button>
+                        {% endif %}
+                    </form>
                 </div>
-            {% endif %}
                 
-            
-            <div class="col-md-12" style="margin-top: 15px;">
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-dismissable alert-{{ category }}">
-                            <a href="#" data-dismiss='alert' class="close">x</a>
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                    {% endif %}
-                {% endwith %}
             </div>
-            <div class="card">
-
-                <div class="print-form" style='padding-right: 40px; padding-bottom: 100px;'>
-                    <div class="col-md-12 col-sm-12">
-                        <h4 style="margin-bottom: 15px;"><strong><a href="/admin/" style="font-size: 18px;"><span class="arrow-back">&#x2190</span> Back to Admin Dashboard</a></strong></h4>
-                        <form action="" method="post" enctype="multipart/form-data">
-                            {{ form2.hidden_tag() }}
-                            {{ render_image(form2.profile_image) }}
-                            {{ form2.submit_btn(class='btn btn-primary') }}
-                            {% if user.image != 'default_profile.jpg' %}
-                                <!-- <button class="btn btn-info" onclick="printContent('printt')" style="padding-right: 15px; padding-left: 15px;">Print</button> -->
-                                <a href="/admin/print/{{ user.id }}" class='btn btn-info'>Print</a>
-                            {% else %} 
-                                <button class='btn btn-info' data-toggle='tooltip' data-placement='top' title='Change your profile picture' disabled="disabled">Print</button>
-                            {% endif %}
-                        </form>
-                    </div>
-                    
-                </div>
-                <div id="printt" name='print' style='min-height: 100vh;'>
-                    <header>
-                        <div class="row">
-                            <div class="col-sm-8 col text-center">
-                                <h3>Membership Registration card</h3>
-                                <h1><strong>ALL PROGRESSIVE CONGRESS</strong></h1>
-                                <h3><strong>Ekiti Chapter</strong></h3>
-                                <div class="logo">
-                                    <img src="\static\images\logo.png" alt="Apc Logo">
-                                </div>
-                                <h3><strong>JUSTICE, PEACE AND UNITY</strong></h3>
-                                <h3><strong>Change</strong></h3>
+            <div id="printt" name='print' style='min-height: 100vh;'>
+                <header>
+                    <div class="row">
+                        <div class="col-sm-8 col text-center">
+                            <h3>Membership Registration card</h3>
+                            <h1><strong>ALL PROGRESSIVE CONGRESS</strong></h1>
+                            <h3><strong>Ekiti Chapter</strong></h3>
+                            <div class="logo">
+                                <img src="\static\images\logo.png" alt="Apc Logo">
                             </div>
-                            <div class="col-sm-4 col text-center">
-                                <img src="/static/images/profile_pictures/{{ user.image }}" alt="User Profile Picture" style='width: 100%; max-width: 275px; margin-right: 20px; max-height: 300px'>
-                            </div>
+                            <h3><strong>JUSTICE, PEACE AND UNITY</strong></h3>
+                            <h3><strong>Change</strong></h3>
                         </div>
-                    </header>
-                    <main>
-                        <form action="" method='POST' name='register_form'>
-                        <div class="container">
-                            <div class="personal" style="margin-top: 50px"> 
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="row">
-                                            <div class="col-md-2 col-2">
-                                                <h3 class="form-header">First Name: </h3>
-                                            </div>
-                                            <div class="col-sm-4 col-4">
-                                                    {{ admin_view_input(form.firstname) }}
-                                            </div>
-                                            <div class="col-md-2 col-2">
-                                                <h3 class="form-header">Last Name: </h3>
-                                            </div>
-                                            <div class="col-md-4 col-4">
-                                                    {{ admin_view_input(form.lastname) }}
-                                            </div>
+                        <div class="col-sm-4 col text-center">
+                            <img src="/static/images/profile_pictures/{{ user.image }}" alt="User Profile Picture" style='width: 100%; max-width: 275px; margin-right: 20px; max-height: 300px'>
+                        </div>
+                    </div>
+                </header>
+                <main>
+                    <form action="" method='POST' name='register_form'>
+                    <div class="container">
+                        <div class="personal" style="margin-top: 50px"> 
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-2 col-2">
+                                            <h3 class="form-header">First Name: </h3>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="row">
-                                            <div class="col-md-2 col-2">
-                                                <h3 class="form-header">State: </h3>
-                                            </div>
-                                            <div class="col-md-10 col-10">
-                                                {{ admin_view_input(form.state) }}
-                                            </div>
+                                        <div class="col-sm-4 col-4">
+                                                {{ admin_view_input(form.firstname) }}
                                         </div>
-                                    </div>
-
-                                    <div class="col-sm-12">
-                                        <div class="row">
-                                            <div class="col-md-2 col-2">
-                                                <h3 class="form-header">Town: </h3>
-                                            </div>
-                                            <div class="col-md-4 col-4">
-                                                {{ admin_view_input(form.city) }}
-                                            </div>
-                                            <div class="col-md-1 col-2">
-                                                <h3 class="form-header">Sex: </h3>
-                                            </div>
-                                            <div class="col-md-5 col-4">
-                                                {{ form.sex(class='form-control') }}
-                                            </div>
+                                        <div class="col-md-2 col-2">
+                                            <h3 class="form-header">Last Name: </h3>
                                         </div>
-                                    </div>
-
-                                    <div class="col-sm-12">
-                                        <div class="row">
-                                            <div class="col-md-2 col-2">
-                                                <h3 class='form-header'>Telephone: </h3>
-                                            </div>
-                                            <div class="col-md-4 col-5">
-                                                {{ admin_view_input(form.phone) }}
-                                            </div>
-                                            <div class="col-md-2 col-2">
-                                                <h3 class="form-header">Ward: </h3>
-                                            </div>
-                                            <div class="col-md-4 col-3">
-                                                {{ admin_view_input(form.ward) }}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    
-
-                                    <div class="col-sm-12">
-                                        <div class="row">
-                                            <div class="col-md-3 col-3">
-                                                <h3 class='form-header'>Local Government: </h3>
-                                            </div>
-                                            <div class="col-md-9 col-9">
-                                                {{ admin_view_input(form.lga) }}
-                                            </div>
+                                        <div class="col-md-4 col-4">
+                                                {{ admin_view_input(form.lastname) }}
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-2 col-2">
+                                            <h3 class="form-header">State: </h3>
+                                        </div>
+                                        <div class="col-md-10 col-10">
+                                            {{ admin_view_input(form.state) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-2 col-2">
+                                            <h3 class="form-header">Town: </h3>
+                                        </div>
+                                        <div class="col-md-4 col-4">
+                                            {{ admin_view_input(form.city) }}
+                                        </div>
+                                        <div class="col-md-1 col-2">
+                                            <h3 class="form-header">Sex: </h3>
+                                        </div>
+                                        <div class="col-md-5 col-4">
+                                            {{ form.sex(class='form-control') }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-2 col-2">
+                                            <h3 class='form-header'>Telephone: </h3>
+                                        </div>
+                                        <div class="col-md-4 col-5">
+                                            {{ admin_view_input(form.phone) }}
+                                        </div>
+                                        <div class="col-md-2 col-2">
+                                            <h3 class="form-header">Ward: </h3>
+                                        </div>
+                                        <div class="col-md-4 col-3">
+                                            {{ admin_view_input(form.ward) }}
+                                        </div>
+                                    </div>
+                                </div>
+
                                 
+
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-3 col-3">
+                                            <h3 class='form-header'>Local Government: </h3>
+                                        </div>
+                                        <div class="col-md-9 col-9">
+                                            {{ admin_view_input(form.lga) }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            
                         </div>
-                        <div class="col-sm-12" style="margin-top: 50px;">
-                            {{ form.submit(class='btn btn-primary') }}
-                        </div>
-                        </form>
-                    </main>
-                </div>
-                
+                    </div>
+                    <div class="col-sm-12" style="margin-top: 50px;">
+                        {{ form.submit(class='btn btn-primary') }}
+                    </div>
+                    </form>
+                </main>
             </div>
+            
         </div>
+    {% endblock %}
 
-        <footer class='footer-section'>
-            <div class="container">
-                <div class="footer-wrapper">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <h3 class="header-title" style="color: #34bce4;">About</h3>
-                            <div class="context">
-                                <p>The All Progressives Congress (APC) is a political party in Nigeria, formed on 6 February 2013 
-                                    in anticipation of the 2015 elections... <a href='#'>read more</a>
-                                </p>
-                                <ul>
-                                    <li><i class="fa fa-marker"></i> Abuja, Nigeria</li>
-                                    <li><i class="fa fa-envelope"></i> info@apc.com.ng</li>
-                                </ul>
-                            </div>
-                        </div>
 
-                        <div class="col-md-3 col-sm-6">
-                            <h3 class="header-title" style="color: #34bce4;">Quick Links</h3>
-                            <div class="context">
-                                <ul class="menu">
-                                    <li>Home</li>
-                                    <li>Login</li>
-                                    <li>Register</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="copyright">
-                                Copyright &copy; 2020 All Progressives Congress. All Rights Reserved.
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class='social-links text-right'>
-                                <ul class="list-inline">
-                                    <li><a href='https://www.facebook.com/voteapc' target="_blank"><i class="fab fa-facebook"></i></a></li>
-                                    <li><a href='https://www.twitter.com/allprogressives' target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
+    {% block script %}
     <script>
         var phone_field = document.getElementById('phone');
         
@@ -292,14 +205,5 @@
             file_input_label.innerText = input.files[0].name;
         }
     </script>
-    <script type='text/javascript'>
-        function printContent(element) {
-            var restorepage = document.body.innerHTML;
-            var printcontent = document.getElementById(element).innerHTML;
-            document.body.innerHTML = printcontent;
-            window.print();
-            document.body.innerHTML = restorepage;
-       }
-    </script>
-</body>
-</html>
+    {% endblock%}
+
