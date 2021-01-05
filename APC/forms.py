@@ -72,3 +72,10 @@ class RegisterForm(FlaskForm):
 class UploadImageForm(FlaskForm):
     profile_image = FileField('Update Image', validators=[FileAllowed(['jpg','png'])])
     submit_btn = SubmitField("Update Profile")
+
+
+
+class ChangePassword(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=8)])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), Length(min=8), EqualTo('password')])
+    submit = SubmitField('Update Password')

@@ -176,7 +176,31 @@
                     </form>
                 </main>
             </div>
-            
+
+            {% if user.role == 'admin' and current_user.id == user.id or user.role == 'user' or  user.role == 'super' and current_user.id == user.id %}
+            <div class="btn-group dropup">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Change Password
+                </button>
+                <div class="dropdown-menu">
+                    <form class="px-4 py-3" method="POST" action='{{ url_for("api.change_password") }}' >
+                        <div class="form-group">
+                            <label for="{{ form3.password.id }}">Password</label>
+                            {{ admin_view_input(form3.password) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form3.confirm_password.id }}">Confirm Password</label>
+                            {{ admin_view_input(form3.confirm_password) }}
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="for-control" value="{{ user.id }}" name='user_id' hidden>
+                        </div>
+                            {{ form3.submit(class='btn btn-primary') }}
+                    </form>
+                    
+                </div>
+            </div>
+            {% endif %}
         </div>
     {% endblock %}
 

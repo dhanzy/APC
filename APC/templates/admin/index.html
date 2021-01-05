@@ -33,6 +33,27 @@
                             <!-- IP Address -->
                             <th style="color: black;"><input type="text" class="form-control" placeholder="Phone Number" /></th>
 
+                            <th style="color: black;">
+
+                                <select id='ward' class="form-control" placeholder="ward" name='ward'>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                </select>
+                            </th>
+
+                            <th style="color: black;"><input type="text" class="form-control" placeholder="Local Government" /></th>
+
                             <th style="color: black; text-align: center; vertical-align: middle;">Preview</th>
                             
                             <th style="color: black; text-align: center; vertical-align: middle;">Remove</th>
@@ -60,6 +81,14 @@
 
                             <td style="text-align: center; vertical-align: middle;">
                                 <span id="{{ user.id }}" style="color: gray;">{{ user.phone }}</span>
+                            </td>
+
+                            <td style="text-align: center; vertical-align: middle;">
+                                <span id="{{ user.id }}" style="color: gray;">{{ user.ward }}</span>
+                            </td>
+
+                            <td style="text-align: center; vertical-align: middle;">
+                                <span id="{{ user.id }}" style="color: gray;">{{ user.lga }}</span>
                             </td>
 
                             <td class="text-center">

@@ -11,9 +11,9 @@ from flask_admin.contrib.sqla import ModelView
 from flask_login import login_required, current_user
  
 
-from APC import admin
+from APC import admin, bcrypt
 from APC.model import User, db
-from APC.forms import RegisterForm, UploadImageForm
+from APC.forms import RegisterForm, UploadImageForm, ChangePassword
 
 
 admins = Blueprint('admins', __name__)
@@ -62,8 +62,12 @@ def profile(user_id):
         alert = None
         form = RegisterForm()
         form2 = UploadImageForm()
+        form3 = ChangePassword()
         if request.method == 'POST':
             user = User.query.filter_by(id=int(user_id)).first()
+            if not user:
+                    flash('Invalid User', 'danger')
+                    return redirect(request.referrer)
             if form2.submit_btn.data and form2.validate() and form2.validate_on_submit:
                 if form2.profile_image.data:
                     picture_file = save_picture(form2.profile_image.data)
@@ -71,7 +75,29 @@ def profile(user_id):
                     db.session.commit()
                     flash('Your Image has been uploaded', 'info')
                     return redirect(request.referrer)
+
+            # print('Checking form3')
+            # if form3.submit.data and form3.validate_on_submit:
+            #     print('Form3 Gotten')
+            #     hashed_password = bcrypt.generate_password_hash(form3.password.data).decode('utf-8')
+            #     print('Encrypted password')
+            #     if user.role == 'admin'  or user.role == 'super':
+            #         print('User is an admin')
+            #         if user.id == current_user.id or user.role == 'super':
+            #             user.password == hashed_password
+            #             db.session.commit()
+            #             flash('User password has been updated', 'info')
+            #             return redirect(request.referrer)
+            #         else:
+            #             flash('Cannot change Users password', 'danger')
+            #             return redirect(request.referrer)
+            #     user.password == hashed_password
+            #     db.session.commit()
+            #     flash('User password has been updated', 'info')
+            #     return redirect(request.referrer)
+
             if form.submit.data and form.validate_on_submit:
+                print('Form 2 being called')
                 user.firstname = form.firstname.data
                 user.lastname = form.lastname.data
                 user.phone = form.phone.data
@@ -80,11 +106,15 @@ def profile(user_id):
                 user.lga = form.lga.data
                 user.city = form.city.data
                 user.ward = form.ward.data
-                
+            
                 db.session.commit()
                 flash('User account has been Updated', 'info')
                 return redirect(request.referrer)
             
+            
+            
+
+
             form.firstname.data = user.firstname
             form.lastname.data = user.lastname
             form.phone.data = user.phone
@@ -96,7 +126,7 @@ def profile(user_id):
 
             if user.image == 'default_profile.jpg':
                 alert = 'Upload User picture before you can print'
-            return render_template('admin/profile.html', form=form, user=user, form2=form2, alert=alert)
+            return render_template('admin/profile.html', form=form, user=user, form2=form2, form3=form3, alert=alert)
         elif request.method=='GET':
             user = User.query.filter_by(id=int(user_id)).first()
             if not user:
@@ -112,7 +142,7 @@ def profile(user_id):
 
             if user.image == 'default_profile.jpg':
                 alert = 'Upload User picture before you can print'
-            return render_template('admin/profile.html', form=form, user=user, form2=form2, alert=alert)
+            return render_template('admin/profile.html', form=form, user=user, form2=form2,form3=form3, alert=alert)
     elif current_user.is_authenticated:
         return abort(403)
     else:

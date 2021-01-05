@@ -46,6 +46,13 @@ def pdf_template():
 
 
 
+@main.route('/card/')
+@login_required
+def card():
+    user_id = current_user.get_id()
+    form = UploadImageForm()
+    user = User.query.filter_by(id=user_id).first()
+    return render_template('card.html', user=user, form=form)
 
 
 @main.route('/profile/', methods=['GET','POST'])
