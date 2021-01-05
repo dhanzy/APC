@@ -32,11 +32,10 @@ def save_picture(form_picture):
 def pdf_template():
     phone = current_user.phone
     user = User.query.filter_by(phone=phone).first()
-    print('Image: ', user.image)
     if user.image == 'default_profile.jpg':
         return redirect(url_for('main.index'))
     host = request.host
-    rendered = render_template('pdf_content.html', user=user, host=host)
+    rendered = render_template('pdfcontent2.html', user=user, host=host)
     pdf = pdfkit.from_string(rendered, False)
 
     response = make_response(pdf)
@@ -46,16 +45,26 @@ def pdf_template():
 
 
 
-@main.route('/card/')
+@main.route('/test/')
 @login_required
-def card():
-    user_id = current_user.get_id()
-    form = UploadImageForm()
-    user = User.query.filter_by(id=user_id).first()
-    return render_template('card.html', user=user, form=form)
+def card2():
+    phone = current_user.phone
+    user = User.query.filter_by(phone=phone).first()
+    host = request.host
+    return render_template('pdfcontent2.html', user=user, host=host)
+    
 
 
-@main.route('/profile/', methods=['GET','POST'])
+# @main.route('/profile/')
+# @login_required
+# def card():
+#     user_id = current_user.get_id()
+#     form = UploadImageForm()
+#     user = User.query.filter_by(id=user_id).first()
+#     return render_template('index.html', user=user, form=form)
+
+
+@main.route('/card/', methods=['GET','POST'])
 @login_required
 def index():
     if current_user.role == 'admin' or current_user.role == 'super':    
@@ -77,7 +86,7 @@ def index():
             return redirect('/profile/')
     if user.image == 'default_profile.jpg':
         alert = 'Upload your picture before you can print'
-    return render_template('index.html', user=user, form=form, alert=alert)
+    return render_template('card.html', user=user, form=form, alert=alert)
 
 
 

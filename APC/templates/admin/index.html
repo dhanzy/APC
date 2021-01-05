@@ -12,6 +12,9 @@
             text-decoration: none;
             color: #34bce4;
         }
+        #user-table_wrapper{
+            margin-top: 30px;
+        }
     </style>
     {% endblock style %}
 
@@ -34,7 +37,7 @@
                             <th style="color: black;"><input type="text" class="form-control" placeholder="Phone Number" /></th>
 
                             <th style="color: black;">
-
+                                <!-- ward -->
                                 <select id='ward' class="form-control" placeholder="ward" name='ward'>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -52,7 +55,27 @@
                                 </select>
                             </th>
 
-                            <th style="color: black;"><input type="text" class="form-control" placeholder="Local Government" /></th>
+                            <th style="color: black;">
+                                <!-- <input type="text" class="form-control" placeholder="Local Government" /> -->
+                                <select class="form-control" id="lga" name="lga">
+                                    <option value="Ado-Ekiti">Ado-Ekiti</option>
+                                    <option value="Ikere">Ikere</option>
+                                    <option value="Oye">Oye</option>
+                                    <option value="Aiyekire (Gbonyin)">Aiyekire (Gbonyin)</option>
+                                    <option value="Efon">Efon</option>
+                                    <option value="Ekiti East">Ekiti East</option>
+                                    <option value="Ekiti South-West">Ekiti South-West</option>
+                                    <option value="Ekiti West">Ekiti West</option>
+                                    <option value="Emure">Emure</option>
+                                    <option value="Ido-Osi">Ido-Osi</option>
+                                    <option value="Ijero">Ijero</option>
+                                    <option value="Ikole">Ikole</option>
+                                    <option value="Ilejemeje">Ilejemeje</option>
+                                    <option value="Irepodun/Ifelodun">Irepodun/Ifelodun</option>
+                                    <option value="Ise/Orun">Ise/Orun</option>
+                                    <option value="Moba">Moba</option></select>
+
+                            </th>
 
                             <th style="color: black; text-align: center; vertical-align: middle;">Preview</th>
                             
@@ -92,14 +115,14 @@
                             </td>
 
                             <td class="text-center">
-                                <button class="btn btn-primary" name="{{ user.id }}" onclick="previewUser(this)"><i class="fa fa-preview"></i> Preview</button>
+                                <button class="btn btn-primary" name="{{ user.id }}" onclick="previewUser(this)"><i class="fa fa-id-card" style='margin-right: 5px;'></i> Preview</button>
                             </td>
 
                             <td class="text-center">
                                 {% if user.role == 'admin' or user.role == 'super' %}
-                                <button class="btn btn-secondary" name="{{ user.id }}" disabled></i>Admin</button>
+                                <button class="btn btn-secondary" name="{{ user.id }}" disabled><i class='fa fa-user' style='margin-right: 5px'></i>Admin</button>
                                 {% else %}
-                                <button class="btn btn-secondary" name="{{ user.id }}" onclick="removeUser(this)"><i class="fa fa-trash"></i>Delete</button>
+                                <button class="btn btn-secondary" name="{{ user.id }}" onclick="removeUser(this)"><i class="fa fa-user" style='margin-right: 5px;'></i>Delete</button>
                                 {% endif %}
                             </td>
                         </tr>
@@ -124,9 +147,8 @@
         var table = $table.DataTable({
             "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
         });
-        $table.colsest('.dataTables_wrapper').find('select').select2({
-            minimumResultsForSearch: -1
-        });
+       
+       
         table.columns().every( function () {
             var that = this;
         
@@ -137,8 +159,25 @@
                         .draw();
                     }
                 });
+            $( 'select', this.header() ).on( 'keyup change', function () {
+                if ( that.search() !== this.value ) {
+                    that
+                        .search( this.value )
+                        .draw();
+                    }
+                });
             });
+
+            
         })
+
+    </script>
+    <script>
+        $(document).ready(function(){
+			$('#user-table_length').after(`<caption id="sessions-title" align="center" style="position: absolute; float: center; left: 45%; transform: translateY(-18%);"><h3 class="titillium">Users: <span class="titillium" id="nuserss">{{n}}</span></h3></caption>`);
+            $('#user-table_length').find('select').addClass('form-control')
+            $('#user-table_filter').find('input').addClass('form-control')
+		});
     </script>
     <script>
         function removeUser(element){

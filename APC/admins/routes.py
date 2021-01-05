@@ -52,7 +52,8 @@ class AdminHomeView(AdminIndexView):
         if current_user.role != 'admin' and current_user.role != 'super':
             return abort(403)
         users = User.query.all()
-        return self.render('admin/index.html', users=users)
+        n = len(users)
+        return self.render('admin/index.html', users=users, n=n)
 
 
 @admin_required
@@ -158,7 +159,7 @@ def pdf_template(user_id):
     if user.image == 'default_profile.jpg':
         return redirect(url_for('main.index'))
     host = request.host
-    rendered = render_template('pdf_content.html', user=user, host=host)
+    rendered = render_template('pdfcontent2.html', user=user, host=host)
     pdf = pdfkit.from_string(rendered, False)
 
     response = make_response(pdf)

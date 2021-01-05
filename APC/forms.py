@@ -8,9 +8,18 @@ import phonenumbers
 from APC.model import User
 
 
-test = [('Ado','Ado'),('Efon','Efon'),('Omuo','Omuo'), ('Aramoko','Aramoko'), ('Erijiyan','Erijiyan'),('Ikogosi','Ikogosi'),('Okemesi','Okemesi'),('Ido Ajinare', 'Ido Ajinare'),('Ilawe', 'Ilawe'),('Igbara Odo','Igbara Odo'), ('Ogotun', 'Ogotun'), ('Emure','Emure'),('Gboyin', 'Gboyin'),('Ido-Osi','Ido-Osi'),('Ijero','Ijero'),('Ipoti','Ipoti'),('Odo Owa','Odo Owa'),('Iloro','Iloro'),('Ikoro','Ikoro'),('Ekamarun','Ekamarun'),('Ekameta','Ekameta'),('Ikere','Ikere'),('Ikole','Ikole'),('Ilejemeje','Ilejemeje'),('Irepodun/Ifelodun','Irepodun/Ifelodun'),('Ise/Orun','Ise/Orun'),('Moba','Moba'),('Oye','Oye')]
-
-
+test = [('Ado','Ado'),('Efon','Efon'),('Omuo','Omuo'), ('Aramoko','Aramoko'), ('Erijiyan','Erijiyan'),\
+        ('Ikogosi','Ikogosi'), ('Okemesi','Okemesi'),('Ido Ajinare', 'Ido Ajinare'),('Ilawe', 'Ilawe'),\
+        ('Igbara Odo','Igbara Odo'), ('Ogotun', 'Ogotun'), ('Emure','Emure'),('Gboyin', 'Gboyin'),('Ido-Osi','Ido-Osi'),\
+        ('Ijero','Ijero'),('Ipoti','Ipoti'),('Odo Owa','Odo Owa'),('Iloro','Iloro'),('Ikoro','Ikoro'),('Ekamarun','Ekamarun'),\
+        ('Ekameta','Ekameta'),('Ikere','Ikere'),('Ikole','Ikole'),('Ilejemeje','Ilejemeje'),('Irepodun/Ifelodun','Irepodun/Ifelodun'),\
+        ('Ise/Orun','Ise/Orun'),('Moba','Moba'),('Oye','Oye')
+    ]
+LocalGoverment = [('Ado-Ekiti', 'Ado-Ekiti'), ('Ikere','Ikere'),('Oye','Oye'), ('Aiyekire (Gbonyin)','Aiyekire (Gbonyin)'), \
+        ('Efon','Efon'), ('Ekiti East','Ekiti East'),('Ekiti South-West','Ekiti South-West'),('Ekiti West','Ekiti West'), \
+        ('Emure','Emure'),('Ido-Osi','Ido-Osi'),('Ijero','Ijero'),('Ikole','Ikole'),('Ilejemeje','Ilejemeje'), \
+        ('Irepodun/Ifelodun','Irepodun/Ifelodun'),('Ise/Orun','Ise/Orun'),('Moba','Moba')
+    ]   
 
 class LoginForm(FlaskForm):
     phone = StringField('Phone Number', validators=[DataRequired(), Length(min=11, max=16)])
@@ -39,7 +48,7 @@ class RegisterForm(FlaskForm):
     state = SelectField('State', choices=[('Ekiti','Ekiti')])
     ward = SelectField('Ward', choices=[str(i) for i in range(1,14)])
     city = StringField('Town', validators=[DataRequired(), Length(max=30)])
-    lga = StringField('Local Government', validators=[DataRequired()])
+    lga = SelectField('Local Government', choices=LocalGoverment)
     password = PasswordField('Password', validators=[DataRequired(), Length(min=8)])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), Length(min=8), EqualTo('password')])
     submit = SubmitField('Register')

@@ -1,5 +1,5 @@
 import os
-
+import functools
 
 import secrets
 from PIL import Image
@@ -29,15 +29,26 @@ def save_picture(form_picture):
 
 
 
+def admin_required(function):
+    @functools.wraps(function)
+    def wrapper(*args, **kwargs):
+        if current_user.is_authenticated and current_user.role == 'admin' or current_user.role == 'super':
+            return function(*args, **kwargs)
+        elif not current_user.is_authenticated:
+            return redirect(url_for('main.login'))
+        else:
+            return abort(403)
+
+
+
 @api.route('/api/user/image', methods=['POST'])
 def user_image():
     """
     Add user image to database
     """
 
-
+@admin_required
 @api.route('/api/user/remove/', methods=['POST'])
-@login_required
 def user_remove():
     """
     Remove a user from database
@@ -49,15 +60,19 @@ def user_remove():
         return redirect('/admin/')
     if user:
         if user.role == 'admin' or user.role == 'super':
+            message = '"user {}:{}:{}" almost deleted'.format(str(user.id), user.firstname, user.phone)
+            util.log(message)
             flash('The user you specified is an admin. You can\'t remove an admin!', 'info')
             return redirect('/admin/')
+        message = '"user {}:{}:{}"  has beeen deleted'.format(str(user.id), user.firstname, user.phone)
+        util.log(message)
         db.session.delete(user)
         db.session.commit()
         return "User {} removed".format(user.phone)
 
 
+@admin_required
 @api.route('/api/user/password/', methods=['POST'])
-@login_required
 def change_password():
     print('Form: ', request.form)
     if request.form.get('password') != request.form.get('confirm_password'):
