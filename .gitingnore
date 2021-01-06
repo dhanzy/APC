@@ -1,0 +1,5 @@
+*.db
+*.pyc
+config.py
+wkhtmltopdf.exe
+migrations/*
