@@ -71,8 +71,8 @@ def profile(user_id):
                     return redirect(request.referrer)
             if form2.submit_btn.data and form2.validate() and form2.validate_on_submit:
                 if form2.profile_image.data:
-                    if user.role == 'admin' and current_user.id != user.id:
-                        flash('Can\'t another admin users image', 'danger')
+                    if user.role == 'admin' or user.role == 'super' and current_user.id != user.id:
+                        flash('Can\'t change another admins image', 'danger')
                         return redirect(request.referrer)
                     picture_file = save_picture(form2.profile_image.data)
                     user.image = picture_file
@@ -101,8 +101,8 @@ def profile(user_id):
             #     return redirect(request.referrer)
 
             if form.submit.data and form.validate_on_submit:
-                if user.role == 'admin' and current_user.id != user.id:
-                        flash('Can\'t alter another admin users details', 'danger')
+                if user.role == 'admin' or user.role == 'super' and current_user.id != user.id:
+                        flash('Can\'t alter another admins details', 'danger')
                         return redirect(request.referrer)
                 user.firstname = form.firstname.data
                 user.lastname = form.lastname.data
