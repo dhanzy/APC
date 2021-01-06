@@ -27,43 +27,68 @@
             padding-left: 15px;
             padding-right: 15px;
         }
-        .form-header{
-            font-weight: bolder;
-            font-size: 20px;
+
+        #printt{
+            border: 1px solid black; 
+            background: url("/static/images/assets/IMG-20210104-WA0015.jpg") center center no-repeat; 
+            background-size: 110% 100%; 
+            position: relative;
+            width: 938px;
+            height: 565px;
+            border-radius: 15px;
         }
-        .input_field{
-            border-bottom: 1px solid #000;
-            width: 100%;
-            text-align: center;
-            font-style: italic;
-            font-size: 18px;
-            color: rgba(0,0,0,0.8);
+        
+        #card_left-side{
+            position: relative;
+            margin: 0px;
+            padding-top: 20px;
+            padding-right: 0px; 
+            text-align: right ;
+            padding-left: 0px;
+            height: 100% ;
         }
-        .underline{
-            border-bottom: 1px solid #000;
+        #card_left-side::after{
+            position: absolute;
+            content: " ";
+            bottom: 0px;
+            left: 30px;
+            height: 152px;
+            width: 170px;
+            background-color: red;
         }
+        #card_right-side{
+            margin: 0px;
+            padding-top: 20px;
+        }
+
+        .file_text{
+            margin-left: 10px;
+            font: cursive;
+            font-weight: 400;
+        }
+        
+        #user-profile{
+            width: 180px; 
+            height: 230px; 
+            z-index: 5;
+        }
+
         .col-md-5 .text-content span{
             padding: 0px 20px 0px 20px;
         }
         .col-md-12{
-            margin-bottom: 15px !important;
+            width: 100%;
+            margin-bottom: 30px !important;
         }
         .col-md-6{
             width: 50%;
         }
-        .col-md-12{
-            width: 100%;
-        }
+        
         .col-sm-8{
             -webkit-box-flex: 0 0 66.666667%;
         }
         .col-sm-4{
             -webkit-box-flex: 0 0 33.333333%;;
-        }
-        .file_text{
-            margin-left: 50px;
-            font: cursive;
-            font-weight: 300;
         }
         
     </style>
@@ -73,40 +98,39 @@
 <body>
     <div class="wrapper" style="margin-top: 50px;">
         <div class="container">
-            <div id="printt" name='print' style='border: 1px solid black; background: url("/static/images/assets/IMG-20210104-WA0015.jpg") center center no-repeat; background-size: 110% 100%; position: relative;'>
+            <div id="printt" name='print'>
                 <div class="ekiti-logo">
                     <img src="{{ url_for('static', filename='images/assets/IMG-20210104-WA0013.png') }}" alt="" width="150px" style='position: absolute; opacity: .5; right: 10px; bottom: 15px;'>
                 </div>
-                <div class="row" style='margin: 0px;'>
-                    <div class="col-md-3 col-3" style='padding-right: 0px; text-align: right ;'>
+                <div class="row" style='margin: 0px; height: 100%'>
+                    <div class="col-md-3 col-3" id='card_left-side'>
 
                         <div style='display: flex; flex-direction: column; padding-top: 10px;'>
                             <div class="image-logo">
-                                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" style='width: 100%; height: 150px;'>
+                                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="APC LOGO" style='width: 100%; height: 150px;'>
                             </div>
                             <div class="profile-image text-center">
-                                <img src="/static/images/profile_pictures/{{ user.image }}" alt="User Profile Picture" style='width: 100%; max-width: 200px; margin-right: 20px; max-height: 300px'>
+                                <img src="/static/images/profile_pictures/{{ user.image }}" alt="User Profile Picture" id='user-profile'>
                             </div>
-                            
+                                
                         </div>
                         
                     </div>
-                    <div class="col-md-9 col-9" style='margin-left: 0px;'>
+                    <div class="col-md-9 col-9" id='card_right-side'>
                         <div class="row">
                             <div class="text-center" style='background-color: #fff; margin-top: 20px; width: 100%;  margin-bottom: 15px;'>
-                                <div class="row">
+                                <div class="row" style='padding: 15px;'>
                                     <div class="col-md-9 col-9">
-                                        <h3>Membership Registration Card</h3>
-                                        <h3 class='text-danger'>ALL PROGRESSIVE CONGRESS (APC)</h3>
+                                        <h1>Membership Card</h1>
+                                        <h3 class='text-danger' style='font-weight: 800;'>ALL PROGRESSIVE CONGRESS (APC)</h3>
                                     </div>
-                                    <div class="col-md-3 col-3" style='margin: auto;'>
+                                    <div class="" style='margin: auto;'>
                                         <img src="{{ url_for('static', filename='images/assets/IMG-20210104-WA0011.jpg') }}" alt="" style='width: 100px; height: 50px;'>
                                     </div>
                                 </div>
                             </div>
                             </div>
-                            <div class="container" style="margin-bottom: 20px;">
-
+                            <div class="container" style="margin-bottom: 20px; margin-top: 30px;">
                                     <div class="col-md-12" style='width: 100%'>
                                         <div class="row">
                                             <div class="col-md-6 col-6" style='width: 50%;'>
