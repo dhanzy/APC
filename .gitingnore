@@ -3,5 +3,6 @@
 *.pyc
 run.py
 config.py
+run.py
 wkhtmltopdf.exe
 migrations/*
