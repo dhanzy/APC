@@ -45,13 +45,13 @@ def pdf_template():
 
 
 
-# @main.route('/test/')
-# @login_required
-# def card2():
-#     phone = current_user.phone
-#     user = User.query.filter_by(phone=phone).first()
-#     host = request.host
-#     return render_template('pdfcontent2.html', user=user, host=host)
+@main.route('/test/')
+@login_required
+def card2():
+    phone = current_user.phone
+    user = User.query.filter_by(phone=phone).first()
+    host = request.host
+    return render_template('pdfcontent2.html', user=user, host=host)
     
 
 
@@ -80,10 +80,10 @@ def index():
                 user.image = picture_file
                 db.session.commit()
                 flash('Your Image has been uploaded', 'info')
-                return redirect('/profile/')
+                return redirect(request.referrer)
         else:
             flash('Your Image was not uploaded', 'danger')
-            return redirect('/profile/')
+            return redirect(request.referrer)
     if user.image == 'default_profile.jpg':
         alert = 'Upload your picture before you can print'
     return render_template('card.html', user=user, form=form, alert=alert)
