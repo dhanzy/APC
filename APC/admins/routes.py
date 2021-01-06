@@ -71,6 +71,9 @@ def profile(user_id):
                     return redirect(request.referrer)
             if form2.submit_btn.data and form2.validate() and form2.validate_on_submit:
                 if form2.profile_image.data:
+                    if user.role == 'admin' and current_user.id != user.id:
+                        flash('Can\'t another admin users image', 'danger')
+                        return redirect(request.referrer)
                     picture_file = save_picture(form2.profile_image.data)
                     user.image = picture_file
                     db.session.commit()
@@ -98,7 +101,9 @@ def profile(user_id):
             #     return redirect(request.referrer)
 
             if form.submit.data and form.validate_on_submit:
-                print('Form 2 being called')
+                if user.role == 'admin' and current_user.id != user.id:
+                        flash('Can\'t alter another admin users details', 'danger')
+                        return redirect(request.referrer)
                 user.firstname = form.firstname.data
                 user.lastname = form.lastname.data
                 user.phone = form.phone.data
@@ -107,7 +112,7 @@ def profile(user_id):
                 user.lga = form.lga.data
                 user.city = form.city.data
                 user.ward = form.ward.data
-            
+
                 db.session.commit()
                 flash('User account has been Updated', 'info')
                 return redirect(request.referrer)

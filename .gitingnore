@@ -1,5 +1,6 @@
 *.db
 *.pyc
 config.py
+run.py
 wkhtmltopdf.exe
 migrations/*
