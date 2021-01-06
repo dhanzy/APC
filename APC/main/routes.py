@@ -80,10 +80,10 @@ def index():
                 user.image = picture_file
                 db.session.commit()
                 flash('Your Image has been uploaded', 'info')
-                return redirect('/profile/')
+                return redirect(request.referrer)
         else:
             flash('Your Image was not uploaded', 'danger')
-            return redirect('/profile/')
+            return redirect(request.referrer)
     if user.image == 'default_profile.jpg':
         alert = 'Upload your picture before you can print'
     return render_template('card.html', user=user, form=form, alert=alert)
@@ -137,7 +137,7 @@ def login():
 			# password authentication
             if user and bcrypt.check_password_hash(user.password, form.password.data):
                 if form.remember.data == True:
-                    login_user(remember=True)
+                    login_user(user, remember=True)
                 else:
                     login_user(user)
                 next_page = request.args.get('next')

@@ -2,7 +2,7 @@ import os
 from datetime import timedelta
 
 class Config(object):
-    SECRET_KEY = 'adkbdbadbakdbahdbhfh'
+    SECRET_KEY = 'whZGhVqfGZccdwqWfBTriDrHzWozUCQD'
 
     # Database Configuration
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -22,7 +22,8 @@ class Debug(Config):
 
 
 class Production(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql:///database.db'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://apc:apcekiti@localhost/apc'
+
     DEBUG = False
 
 
