@@ -137,7 +137,7 @@ def login():
 			# password authentication
             if user and bcrypt.check_password_hash(user.password, form.password.data):
                 if form.remember.data == True:
-                    login_user(remember=True)
+                    login_user(user, remember=True)
                 else:
                     login_user(user)
                 next_page = request.args.get('next')
