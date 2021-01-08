@@ -287,3 +287,22 @@
 2021-01-06 14:20:50,194 - 8:Daniel:+2348155832039 - 127.0.0.1 - - [06/Jan/2021 14:20:50] "[37mGET /static/images/logo.png HTTP/1.1[0m" 200 -
 2021-01-06 14:20:50,752 - 8:Daniel:+2348155832039 - 127.0.0.1 - - [06/Jan/2021 14:20:50] "[37mGET /print/ HTTP/1.1[0m" 200 -
 2021-01-06 14:21:31,442 - 8:Daniel:+2348155832039 -  * Detected change in 'C:\\Users\\user\\Documents\\APC\\APC\\main\\routes.py', reloading
+2021-01-08 14:56:03,258 - Anonymous - Experienced a 404 error, http://127.0.0.1:5000/
+2021-01-08 14:56:03,301 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:56:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2021-01-08 14:57:08,832 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:08] "[37mGET / HTTP/1.1[0m" 200 -
+2021-01-08 14:57:08,860 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:08] "[37mGET /static/css/main.css HTTP/1.1[0m" 200 -
+2021-01-08 14:57:08,885 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:08] "[37mGET /static/plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css HTTP/1.1[0m" 200 -
+2021-01-08 14:57:08,893 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:08] "[37mGET /static/plugins/font-awesome/css/all.css HTTP/1.1[0m" 200 -
+2021-01-08 14:57:08,898 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:08] "[37mGET /static/js/jquery-1.11.3.min.js HTTP/1.1[0m" 200 -
+2021-01-08 14:57:08,950 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:08] "[37mGET /static/plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js HTTP/1.1[0m" 200 -
+2021-01-08 14:57:09,013 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:09] "[37mGET /static/js/swup.min.js HTTP/1.1[0m" 200 -
+2021-01-08 14:57:09,017 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:09] "[37mGET /static/js/script.js HTTP/1.1[0m" 200 -
+2021-01-08 14:57:09,018 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:09] "[37mGET /static/images/logo.png HTTP/1.1[0m" 200 -
+2021-01-08 14:57:09,083 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:09] "[37mGET /static/plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css.map HTTP/1.1[0m" 200 -
+2021-01-08 14:57:09,118 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:09] "[37mGET /static/plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js.map HTTP/1.1[0m" 200 -
+2021-01-08 14:57:12,765 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:12] "[37mGET /register/ HTTP/1.1[0m" 200 -
+2021-01-08 14:57:15,682 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:15] "[37mGET / HTTP/1.1[0m" 200 -
+2021-01-08 14:57:18,286 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:18] "[37mGET /register/ HTTP/1.1[0m" 200 -
+2021-01-08 14:57:21,517 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:21] "[37mGET / HTTP/1.1[0m" 200 -
+2021-01-08 14:57:23,386 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:23] "[37mGET /register/ HTTP/1.1[0m" 200 -
+2021-01-08 14:57:25,848 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:25] "[37mGET / HTTP/1.1[0m" 200 -

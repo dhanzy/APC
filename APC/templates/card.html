@@ -74,7 +74,7 @@
             padding-top: 20px;
         }
         #card_right-side .col-6, #card_right-side .col-12{
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
         #user-profile{
             width: 180px; 
@@ -187,11 +187,25 @@
                                 </div>
                                 <div class="container" style="margin-bottom: 20px; margin-top: 30px;">
                                     <div class="row">
-                                        <div class="col-md-6 col-6">
-                                            <h3>First Name: <span class="file_text" >{{ user.firstname | capitalize }} </span> </h3> 
+                                        <div class="col-md-12 col-12">
+                                            <div class="row">
+                                                <div class="col-md-4 col-4">
+                                                    <h3>First Name:</h3>   
+                                                </div>
+                                                <div class="col-md-8 col-8 text-center">
+                                                    <h3><span class="file_text" >{{ user.firstname | capitalize }} </span></h3>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-6">
-                                            <h3>Last Name: <span class='file_text'>{{ user.lastname | capitalize }}</span></h3>
+                                        <div class="col-md-12 col-12">
+                                            <div class="row">
+                                                <div class="col-md-4 col-4">
+                                                    <h3>Last Name:</h3>   
+                                                </div>
+                                                <div class="col-md-8 text-center col-8">
+                                                    <h3><span class="file_text" >{{ user.lastname | capitalize }} </span></h3>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="col-md-6 col-6">

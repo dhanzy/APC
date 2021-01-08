@@ -5,7 +5,7 @@ from config import config_dict
 from APC import create_app, db
 
 
-config = config_dict.get('Production')
+config = config_dict.get('Debug')
 
 app = create_app(config)
 Migrate(app, db, render_as_batch=True)
