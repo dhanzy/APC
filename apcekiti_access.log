@@ -306,3 +306,97 @@
 2021-01-08 14:57:21,517 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:21] "[37mGET / HTTP/1.1[0m" 200 -
 2021-01-08 14:57:23,386 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:23] "[37mGET /register/ HTTP/1.1[0m" 200 -
 2021-01-08 14:57:25,848 - Anonymous - 127.0.0.1 - - [08/Jan/2021 14:57:25] "[37mGET / HTTP/1.1[0m" 200 -
+2021-01-11 10:27:11,795 - 2:Samuel:+2348114146896 - Experienced a 404 error, http://127.0.0.1:5000/print/
+2021-01-11 10:27:11,993 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:27:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2021-01-11 10:28:11,114 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:11] "[37mGET /card/ HTTP/1.1[0m" 200 -
+2021-01-11 10:28:11,397 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:11] "[37mGET /static/images/logo.png HTTP/1.1[0m" 200 -
+2021-01-11 10:28:13,139 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:13] "[37mGET /static/plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css HTTP/1.1[0m" 200 -
+2021-01-11 10:28:13,139 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:13] "[37mGET /static/js/jquery-1.11.3.min.js HTTP/1.1[0m" 200 -
+2021-01-11 10:28:13,142 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:13] "[37mGET /static/plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js HTTP/1.1[0m" 200 -
+2021-01-11 10:28:13,281 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:13] "[37mGET /static/images/assets/IMG-20210104-WA0013.png HTTP/1.1[0m" 200 -
+2021-01-11 10:28:13,282 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:13] "[37mGET /static/images/assets/IMG-20210104-WA0015.jpg HTTP/1.1[0m" 200 -
+2021-01-11 10:28:13,285 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:13] "[37mGET /static/images/assets/IMG-20210104-WA0011.jpg HTTP/1.1[0m" 200 -
+2021-01-11 10:28:13,285 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:13] "[37mGET /static/images/logo.png HTTP/1.1[0m" 200 -
+2021-01-11 10:28:13,286 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:13] "[37mGET /static/images/profile_pictures/35582622a7dd109b.JPG HTTP/1.1[0m" 200 -
+2021-01-11 10:28:13,901 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:13] "[37mGET /print/ HTTP/1.1[0m" 200 -
+2021-01-11 10:28:24,475 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:24] "[37mGET /static/plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css HTTP/1.1[0m" 200 -
+2021-01-11 10:28:24,475 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:24] "[37mGET /static/plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js HTTP/1.1[0m" 200 -
+2021-01-11 10:28:24,476 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:24] "[37mGET /static/js/jquery-1.11.3.min.js HTTP/1.1[0m" 200 -
+2021-01-11 10:28:24,648 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:24] "[37mGET /static/images/profile_pictures/35582622a7dd109b.JPG HTTP/1.1[0m" 200 -
+2021-01-11 10:28:24,650 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:24] "[37mGET /static/images/assets/IMG-20210104-WA0015.jpg HTTP/1.1[0m" 200 -
+2021-01-11 10:28:24,652 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:24] "[37mGET /static/images/logo.png HTTP/1.1[0m" 200 -
+2021-01-11 10:28:24,654 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:24] "[37mGET /static/images/assets/IMG-20210104-WA0013.png HTTP/1.1[0m" 200 -
+2021-01-11 10:28:24,660 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:24] "[37mGET /static/images/assets/IMG-20210104-WA0011.jpg HTTP/1.1[0m" 200 -
+2021-01-11 10:28:25,207 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:28:25] "[37mGET /print/ HTTP/1.1[0m" 200 -
+2021-01-11 10:29:02,668 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:02] "[32mGET /logout/ HTTP/1.1[0m" 302 -
+2021-01-11 10:29:02,699 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:02] "[37mGET / HTTP/1.1[0m" 200 -
+2021-01-11 10:29:10,445 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:10] "[32mPOST / HTTP/1.1[0m" 302 -
+2021-01-11 10:29:10,489 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:10] "[32mGET /card/ HTTP/1.1[0m" 302 -
+2021-01-11 10:29:10,577 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:10] "[37mGET /admin/ HTTP/1.1[0m" 200 -
+2021-01-11 10:29:10,709 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:10] "[37mGET /static/plugins/datatables/DataTables-1.10.9/css/dataTables.bootstrap.min.css HTTP/1.1[0m" 200 -
+2021-01-11 10:29:10,789 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:10] "[37mGET /static/plugins/bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 200 -
+2021-01-11 10:29:10,804 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:10] "[37mGET /static/plugins/datatables/datatables.min.js HTTP/1.1[0m" 200 -
+2021-01-11 10:29:10,813 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:10] "[37mGET /static/plugins/datatables/datatables.min.css HTTP/1.1[0m" 200 -
+2021-01-11 10:29:11,022 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:11] "[37mGET /static/images/profile_pictures/default_profile.jpg HTTP/1.1[0m" 200 -
+2021-01-11 10:29:11,500 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:11] "[37mGET /static/plugins/datatables/DataTables-1.10.9/images/sort_both.png HTTP/1.1[0m" 200 -
+2021-01-11 10:29:11,699 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:29:11] "[37mGET /static/plugins/datatables/DataTables-1.10.9/images/sort_asc.png HTTP/1.1[0m" 200 -
+2021-01-11 10:30:04,513 - 2:Samuel:+2348114146896 - 127.0.0.1 - - [11/Jan/2021 10:30:04] "[37mGET /admin/profile/1 HTTP/1.1[0m" 200 -
+2021-04-03 11:06:16,958 - Anonymous - Experienced a 404 error, None
+2021-04-03 11:06:17,191 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:17] "[33mGET /gallery/ HTTP/1.1[0m" 404 -
+2021-04-03 11:06:17,560 - Anonymous - Experienced a 404 error, http://127.0.0.1:5000/gallery/
+2021-04-03 11:06:17,556 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:17] "[37mGET /static/css/main.css HTTP/1.1[0m" 200 -
+2021-04-03 11:06:17,564 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:17] "[33mGET /static/font-awesome/css/all.css HTTP/1.1[0m" 404 -
+2021-04-03 11:06:17,587 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:17] "[37mGET /static/plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css HTTP/1.1[0m" 200 -
+2021-04-03 11:06:17,647 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:17] "[37mGET /static/js/jquery-1.11.3.min.js HTTP/1.1[0m" 200 -
+2021-04-03 11:06:17,673 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:17] "[37mGET /static/plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js HTTP/1.1[0m" 200 -
+2021-04-03 11:06:17,831 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:17] "[37mGET /static/js/swup.min.js HTTP/1.1[0m" 200 -
+2021-04-03 11:06:17,869 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:17] "[37mGET /static/js/script.js HTTP/1.1[0m" 200 -
+2021-04-03 11:06:18,100 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:18] "[37mGET /static/images/logo.png HTTP/1.1[0m" 200 -
+2021-04-03 11:06:22,595 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:22] "[37mGET / HTTP/1.1[0m" 200 -
+2021-04-03 11:06:22,692 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:22] "[37mGET /static/plugins/font-awesome/css/all.css HTTP/1.1[0m" 200 -
+2021-04-03 11:06:23,145 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:23] "[37mGET /static/fonts/Fredoka_One/FredokaOne-Regular.ttf HTTP/1.1[0m" 200 -
+2021-04-03 11:06:33,082 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:06:33] "[37mGET /register/ HTTP/1.1[0m" 200 -
+2021-04-03 11:07:15,716 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:15] "[37mPOST / HTTP/1.1[0m" 200 -
+2021-04-03 11:07:26,267 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:26] "[32mPOST / HTTP/1.1[0m" 302 -
+2021-04-03 11:07:26,308 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:26] "[32mGET /card/ HTTP/1.1[0m" 302 -
+2021-04-03 11:07:26,601 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:26] "[37mGET /admin/ HTTP/1.1[0m" 200 -
+2021-04-03 11:07:26,879 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:26] "[37mGET /static/plugins/datatables/datatables.min.css HTTP/1.1[0m" 200 -
+2021-04-03 11:07:26,922 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:26] "[37mGET /static/plugins/datatables/DataTables-1.10.9/css/dataTables.bootstrap.min.css HTTP/1.1[0m" 200 -
+2021-04-03 11:07:27,019 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:27] "[37mGET /static/plugins/bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js HTTP/1.1[0m" 200 -
+2021-04-03 11:07:27,037 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:27] "[37mGET /static/plugins/datatables/datatables.min.js HTTP/1.1[0m" 200 -
+2021-04-03 11:07:27,107 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:27] "[37mGET /static/images/profile_pictures/default_profile.jpg HTTP/1.1[0m" 200 -
+2021-04-03 11:07:27,758 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:27] "[37mGET /static/plugins/datatables/DataTables-1.10.9/images/sort_both.png HTTP/1.1[0m" 200 -
+2021-04-03 11:07:27,848 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:27] "[37mGET /static/plugins/datatables/DataTables-1.10.9/images/sort_asc.png HTTP/1.1[0m" 200 -
+2021-04-03 11:07:27,892 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:27] "[37mGET /static/plugins/font-awesome/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 200 -
+2021-04-03 11:07:48,923 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:48] "[37mGET /admin/profile/1 HTTP/1.1[0m" 200 -
+2021-04-03 11:07:49,198 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:07:49] "[37mGET /static/css/style.css HTTP/1.1[0m" 200 -
+2021-04-03 11:08:43,290 - Anonymous - STREAM b'IHDR' 16 13
+2021-04-03 11:08:43,310 - Anonymous - STREAM b'pHYs' 41 9
+2021-04-03 11:08:43,311 - Anonymous - STREAM b'tEXt' 62 58
+2021-04-03 11:08:43,311 - Anonymous - STREAM b'tEXt' 132 24
+2021-04-03 11:08:43,312 - Anonymous - STREAM b'tEXt' 168 16
+2021-04-03 11:08:43,312 - Anonymous - STREAM b'tEXt' 196 9
+2021-04-03 11:08:43,312 - Anonymous - STREAM b'tEXt' 217 17
+2021-04-03 11:08:43,313 - Anonymous - STREAM b'tEXt' 246 15
+2021-04-03 11:08:43,313 - Anonymous - STREAM b'tEXt' 273 19
+2021-04-03 11:08:43,313 - Anonymous - STREAM b'tEXt' 304 31
+2021-04-03 11:08:43,313 - Anonymous - STREAM b'tEXt' 347 38
+2021-04-03 11:08:43,313 - Anonymous - STREAM b'tEXt' 397 39
+2021-04-03 11:08:43,314 - Anonymous - STREAM b'tEXt' 448 48
+2021-04-03 11:08:43,314 - Anonymous - STREAM b'IDAT' 508 8192
+2021-04-03 11:08:45,249 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:08:45] "[32mPOST /admin/profile/1 HTTP/1.1[0m" 302 -
+2021-04-03 11:08:45,389 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:08:45] "[37mGET /admin/profile/1 HTTP/1.1[0m" 200 -
+2021-04-03 11:08:45,729 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:08:45] "[37mGET /static/images/profile_pictures/0d1819aa78999951.png HTTP/1.1[0m" 200 -
+2021-04-03 11:09:02,149 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:09:02] "[37mGET /static/plugins/bootstrap-4.5.3-dist/css/bootstrap.min.css HTTP/1.1[0m" 200 -
+2021-04-03 11:09:02,150 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:09:02] "[37mGET /static/js/jquery-1.11.3.min.js HTTP/1.1[0m" 200 -
+2021-04-03 11:09:02,150 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:09:02] "[37mGET /static/plugins/bootstrap-4.5.3-dist/js/bootstrap.min.js HTTP/1.1[0m" 200 -
+2021-04-03 11:09:02,452 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:09:02] "[37mGET /static/images/logo.png HTTP/1.1[0m" 200 -
+2021-04-03 11:09:02,470 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:09:02] "[37mGET /static/images/profile_pictures/0d1819aa78999951.png HTTP/1.1[0m" 200 -
+2021-04-03 11:09:02,494 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:09:02] "[37mGET /static/images/assets/IMG-20210104-WA0013.png HTTP/1.1[0m" 200 -
+2021-04-03 11:09:02,520 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:09:02] "[37mGET /static/images/assets/IMG-20210104-WA0015.jpg HTTP/1.1[0m" 200 -
+2021-04-03 11:09:02,544 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:09:02] "[37mGET /static/images/assets/IMG-20210104-WA0011.jpg HTTP/1.1[0m" 200 -
+2021-04-03 11:09:09,027 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:09:09] "[37mGET /admin/print/1 HTTP/1.1[0m" 200 -
+2021-04-03 11:09:55,122 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:09:55] "[37mGET /admin/profile/1 HTTP/1.1[0m" 200 -
+2021-04-03 11:10:02,879 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:10:02] "[32mGET /logout/ HTTP/1.1[0m" 302 -
+2021-04-03 11:10:02,907 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:10:02] "[37mGET / HTTP/1.1[0m" 200 -
+2021-04-03 11:10:06,384 - Anonymous - 127.0.0.1 - - [03/Apr/2021 11:10:06] "[37mGET /register/ HTTP/1.1[0m" 200 -

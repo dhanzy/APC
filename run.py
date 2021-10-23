@@ -1,11 +1,10 @@
 from flask_migrate import Migrate
 
-
 from config import config_dict
 from APC import create_app, db
 
 
-config = config_dict.get('Debug')
+config = config_dict.get('Production')
 
 app = create_app(config)
 Migrate(app, db, render_as_batch=True)

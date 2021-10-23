@@ -14,6 +14,11 @@
     <title>APC - Memebership Form</title>
 
     <style>
+        @font-face{
+            font-family: Yellowtail;
+            src: url('/static/fonts/Yellowtail/Yellowtail-Regular.ttf');
+            font-weight: 400;
+        }
 
         .row{
             display: -webkit-box;
@@ -63,7 +68,6 @@
 
         .file_text{
             margin-left: 5px;
-            font: cursive;
             font-weight: 400;
         }
         
@@ -136,7 +140,7 @@
                                             <div class="col-md-4 col-4">
                                                 <h3>First Name:</h3>   
                                             </div>
-                                            <div class="col-md-8 col-8 text-center">
+                                            <div class="col-md-8 col-8">
                                                 <h3><span class="file_text" >{{ user.firstname | capitalize }} </span></h3>
                                             </div>
                                         </div>
@@ -147,7 +151,7 @@
                                             <div class="col-md-4 col-4">
                                                 <h3>Last Name:</h3>   
                                             </div>
-                                            <div class="col-md-8 col-8 text-center">
+                                            <div class="col-md-8 col-8">
                                                 <h3><span class="file_text" >{{ user.lastname | capitalize }} </span></h3>
                                             </div>
                                         </div>

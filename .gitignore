@@ -1,8 +1,6 @@
+venv
 *.db
 /*.db
 *.pyc
-run.py
-config.py
-run.py
 wkhtmltopdf.exe
 migrations/*

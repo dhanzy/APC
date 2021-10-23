@@ -1,11 +1,30 @@
+@font-face{
+    font-family: "Fredoka One";
+    src: url('/static/fonts/Fredoka_One/FredokaOne-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face{
+    font-family: Yellowtail;
+    src: url('/static/fonts/Yellowtail/Yellowtail-Regular.ttf');
+    font-weight: 400;
+}
+  
+
 *{
     box-sizing: border-box;
+}
+h1 {
+    font-family: "Fredoka One", sans-serif, serif;
 }
 .wrapper{
     position: relative;
     min-height: 100vh;
     overflow: hidden;
     background-color: #fff;
+}
+.yellowtail {
+    font-family: Yellowtail, cursive;
 }
 .wrapper::before{
     position: absolute;

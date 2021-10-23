@@ -1,3 +1,9 @@
+@font-face{
+  font-family: Yellowtail;
+  src: url('/static/fonts/Yellowtail/Yellowtail-Regular.ttf');
+  font-weight: 400;
+}
+
 body{
   background: #efefef;
 }

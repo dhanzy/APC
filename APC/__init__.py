@@ -3,7 +3,6 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin, AdminIndexView
-from flask_bootstrap import Bootstrap
 
 # Database
 db = SQLAlchemy()
@@ -21,18 +20,21 @@ bcrypt = Bcrypt()
 # Admin
 admin = Admin(name='Dashboard', template_mode='bootstrap3')
 
-# Bootstrap = Bootstrap()
 
 def register_extension(app):
     from APC.model import User
     from APC.admins.routes import AdminHomeView
     
     db.init_app(app)
-    # Bootstrap.init_app(app)
     login_manager.init_app(app)
     bcrypt.init_app(app)
     admin.init_app(app, index_view=AdminHomeView(name='Dashboard'))
 
+
+def create_database(app):
+    from APC import model
+    with app.app_context():
+        db.create_all()
 
 def register_bluprint(app):
     from APC.main.routes import main
@@ -50,5 +52,6 @@ def create_app(config):
     app = Flask(__name__)
     app.config.from_object(config)
     register_extension(app)
+    create_database(app)
     register_bluprint(app)
     return app

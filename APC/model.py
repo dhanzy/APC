@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, Binary, Table, ForeignKey, Boolean, DateTime, Unicode
+from sqlalchemy import Column, String, Integer, Table, ForeignKey, Boolean, DateTime, Unicode
 from flask_login import UserMixin
 
 
